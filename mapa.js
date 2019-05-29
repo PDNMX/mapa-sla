@@ -13,20 +13,17 @@ fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7
 			}
 		});
 	  });
+	console.log(entidadesMexico);
 	/* console.log("hola");
 	console.log(entidadesMexico);
 	console.log("adios"); */
 	// Configurando el mapa
-	let map = L.map('map').setView([23.9916519, -102.0162908], 4);
+	let map = L.map('map', { zoomControl:false }).setView([23.9916519, -102.0162908], 5);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		minZoom: 3,
-		maxZoom: 10,
-		zoom: 100,
 		attribution: '',
 		id: 'mapbox.light'
 	}).addTo(map);
-
 
 	// control that shows state info on hover
 	let info = L.control();
@@ -40,7 +37,7 @@ fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7
 	info.update = function (props) {
 		this._div.innerHTML = '<h4>Puntaje</h4>' +  (props ?
 			'<b>' + props.name + '</b><br />' + props.puntaje
-			: 'Pasa el cursor por el entidad para ver más detalles');
+			: 'Pasa el cursor por la entidad para ver más detalles');
 	};
 
 	info.addTo(map);
@@ -109,8 +106,7 @@ fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7
 	}).addTo(map);
 
 	map.attributionControl.addAttribution('');
-
-
+	map.scrollWheelZoom.disable(); // deshabilita zoom
 	let legend = L.control({position: 'bottomright'});
 
 	legend.onAdd = function (map) {
