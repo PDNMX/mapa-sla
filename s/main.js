@@ -9,34 +9,50 @@ let map = d3.select('#mexico');
 let color = d3.scaleOrdinal(d3.schemeSet3);
 let color2 = d3.scaleOrdinal(d3.schemePastel2);
 let mexico;
-d3.json("mexico.topojson")
+d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
-        map.append('path').attr('id', 'step-all')
+        fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/o1a8gfg/public/values?alt=json')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(jsonHugo) {
+            mexico.objects.collection.geometries.forEach(function(element){
+                jsonHugo.feed.entry.forEach(function(newElement) {
+                    if(parseInt(element.properties.clave)===parseInt(newElement.gsx$claveagee.$t)){
+                        element.properties.puntaje=parseInt(newElement.gsx$puntaje.$t);
+                    }
+                });
+            });
+            /* console.log(mexico); */
+            return(mexico);
+        }).then(function(mexico){
+            map.append('path').attr('id', 'step-all')
             .attr('vector-effect', 'non-scaling-stroke')
             .attr('d', path(topojson.feature(mexico, mexico.objects.collection)));
-        /* var states_filter = function(a, b){return (a !== b);} */
-        /* map.append('path').attr('id', 'step-0').attr('opacity', 0)
-            .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
-            .attr('d', path(topojson.mesh(mexico, mexico.objects.collection))); */
-            // for `topojson.mesh` see also https://github.com/topojson/topojson-client/blob/master/README.md#mesh
-        /* var counties_filter = function(a, b) { return (a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)); }; */
-        map.append('path').attr('id', 'step-1')
-            .attr('stroke', '#aaa').attr('opacity', 0)
-            .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
-            .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
-        map.append("g").attr('id', 'step-2').attr('opacity', 0)
-        .selectAll("path")
-        .data(topojson.feature(mexico, mexico.objects.collection).features)
-        .join("path")
-            .attr("fill", function(d,i){return color2(i);})
-            .attr("d", path);
-        map.append("g").attr('id', 'step-3').attr('opacity', 0)
-        .selectAll("path")
-        .data(topojson.feature(mexico, mexico.objects.collection).features)
-        .join("path")
-            .attr("fill", function(d,i){return color(i);})
-            .attr("d", path);
+            /* var states_filter = function(a, b){return (a !== b);} */
+            /* map.append('path').attr('id', 'step-0').attr('opacity', 0)
+                .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
+                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection))); */
+                // for `topojson.mesh` see also https://github.com/topojson/topojson-client/blob/master/README.md#mesh
+            /* var counties_filter = function(a, b) { return (a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)); }; */
+            map.append('path').attr('id', 'step-1')
+                .attr('stroke', '#aaa').attr('opacity', 0)
+                .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
+                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
+            map.append("g").attr('id', 'step-2').attr('opacity', 0)
+            .selectAll("path")
+            .data(topojson.feature(mexico, mexico.objects.collection).features)
+            .join("path")
+                .attr("fill", function(d,i){return color2(i);})
+                .attr("d", path);
+            map.append("g").attr('id', 'step-3').attr('opacity', 0)
+            .selectAll("path")
+            .data(topojson.feature(mexico, mexico.objects.collection).features)
+            .join("path")
+                .attr("fill", function(d,i){return color(i);})
+                .attr("d", path);
+        })
     });
 
 // scrollama basic
@@ -73,11 +89,11 @@ function handleStepProgress(response) {
 
 function init() {
     // set random padding for different step heights (not required)
-    /* steps.forEach(function (step) {
+    steps.forEach(function (step) {
         let v = 100 + Math.floor(Math.random() * window.innerHeight / 4);
         // step.style.padding = v + 'px 0px';
         step.style.height = '300px';
-    }) */;
+    });
 
     // 1. setup the scroller with the bare-bones options
     // this will also initialize trigger observations
@@ -99,17 +115,3 @@ function init() {
 // kick things off
 init();
 
-/* fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/o1a8gfg/public/values?alt=json')
-.then(function(response) {
-	return response.json();
-})
-.then(function(jsonHugo) {
-	entidadesMexico.features.forEach(function(element){
-		jsonHugo.feed.entry.forEach(function(newElement) {
-			if(parseInt(element.properties.clave)===parseInt(newElement.gsx$claveagee.$t)){
-				element.properties.puntaje=parseInt(newElement.gsx$puntaje.$t);
-			}
-		});
-	  });
-	console.log(entidadesMexico);
-}); */
