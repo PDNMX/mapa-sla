@@ -31,26 +31,41 @@ d3.json("mexico.json")
             .attr('vector-effect', 'non-scaling-stroke')
             .attr('d', path(topojson.feature(mexico, mexico.objects.collection)));
             /* var states_filter = function(a, b){return (a !== b);} */
-            /* map.append('path').attr('id', 'step-0').attr('opacity', 0)
+            map.append('path').attr('id', 'step-0').attr('opacity', 0)
                 .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
-                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection))); */
+                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection))); 
                 // for `topojson.mesh` see also https://github.com/topojson/topojson-client/blob/master/README.md#mesh
             /* var counties_filter = function(a, b) { return (a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)); }; */
             map.append('path').attr('id', 'step-1')
                 .attr('stroke', '#aaa').attr('opacity', 0)
                 .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
-            map.append("g").attr('id', 'step-2').attr('opacity', 0)
+            
+            // MUY DIFERENTES
+            map.append("g").attr('id', 'step-2').attr('opacity', 0.7)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-                .attr("fill", function(d,i){return color2(i);})
+                .attr("fill", function(d,i){
+                    return d.properties.puntaje > 25 ? '#1b7837' :
+                            d.properties.puntaje > 20  ? '#7fbf7b' :
+                            d.properties.puntaje > 15  ? '#d9f0d3' :
+                            d.properties.puntaje > 10  ? '#FFF' :
+                            '#FFF';
+                })
                 .attr("d", path);
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-                .attr("fill", function(d,i){return color(i);})
+                .attr("fill", function(d,i){
+                    /* return color(i); */
+                    return d.properties.puntaje > 15  ? '#FFF' :
+                            d.properties.puntaje > 10  ? '#e7d4e8' :
+                            d.properties.puntaje > 5  ? '#af8dc3' :
+                            d.properties.puntaje >= 0  ? '#762a83' :
+                            '#000';
+                })
                 .attr("d", path);
         })
     });
@@ -104,8 +119,8 @@ function init() {
         offset: 0.2,
         // progress: true,
     })
-        .onStepEnter(handleStepEnter)
-        .onStepExit(handleStepExit)
+    .onStepEnter(handleStepEnter)
+    .onStepExit(handleStepExit)
         // .onStepProgress(handleStepProgress)
 
     // setup resize event

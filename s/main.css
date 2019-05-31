@@ -1,5 +1,3 @@
-/* default / demo page */
-
 * {
   box-sizing: border-box;
 }
@@ -65,7 +63,7 @@ a:hover {
 }
 
 #outro {
-  height: 1200px;
+  height: 4400px;
 }
 
 /* scrollama */
