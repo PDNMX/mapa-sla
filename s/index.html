@@ -9,6 +9,7 @@
 	<meta name="description" content="Scrollama Demo: Basic">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 
 </head>
 
@@ -42,22 +43,29 @@
 			<div id='anchor-2'></div>
 			<section id='scroll'>
 				<div class='scroll__text'>
-					<div class='step' data-step='1'>
+					<div class='step' data-step='0'>
 						<p>Descripción SLAs</p>
+						<p>El Sistema Nacional Anticorrupción (SNA) fue creado por medio de una reforma constitucional. Las entidades federativas están obligadas a hacer sus propias leyes y modificaciones para que cada una tenga su Sistema Local Anticorrupción (Artículo cuarto transitorio; Decreto por el que se reforman, adicionan y derogan diversas disposiciones de la Constitución Política de los Estados Unidos Mexicanos, en materia de combate a la corrupción; Diario Oficial de la Federación; 27 de mayo de 2015).</p>
 					</div>
-					<div class='step' data-step='2'>
+					<div class='step' data-step='1'>
 						<p>¿Qué hacemos?</p>
+						<p>Estas leyes son diversas porque cada entidad federativa es única. Entonces, necesitamos conocer las leyes que rigen cómo los datos de los estados y la Ciudad de México impulsarán el combate a la corrupción con inteligencia. Revisamos todas las leyes en la materia; identificamos cada artículo referente a las plataformas o sistemas de información estatales; la transformamos a datos abiertos, e hicimos este mapa interactivo.</p>
 					</div>
 
-					<div class='step' data-step='3'>
+					<div class='step' data-step='2'>
 						<p>Información de las más parecidas</p>
+						<p>Codificamos cada artículo para generar puntajes de similitud con la normatividad de la Plataforma Digital Nacional (PDN): las verdes son las entidades que tienen las leyes más parecidas a las de la PDN.</p>
 						<!-- <div id='anchor-3'></div> -->
 					</div>
-					<div class='step' data-step='4'>
-						<p>Las distintas</p>
+					<div class='step' data-step='3'>
+						<p>Las diferentes</p>
+						<p>Las moradas tienen las leyes diferentes. Esto no es malo, cada entidad tiene condiciones distintas.</p>
 						<div id='anchor-3'></div>
 					</div>
-
+					<div class='step' data-step='4'>
+						<p>Da clic en cualquier entidad federativa para conocer más de la normatividad de su plataforma o sistema de información</p>
+						<div id='anchor-3'></div>
+					</div>
 				</div>
 			</section>
 			<div id='anchor-4'></div>
@@ -71,6 +79,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/2.0.0/scrollama.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 

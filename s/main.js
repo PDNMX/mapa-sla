@@ -9,6 +9,7 @@ let map = d3.select('#mexico');
 let color = d3.scaleOrdinal(d3.schemeSet3);
 let color2 = d3.scaleOrdinal(d3.schemePastel2);
 let mexico;
+
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
@@ -33,16 +34,16 @@ d3.json("mexico.json")
             /* var states_filter = function(a, b){return (a !== b);} */
             map.append('path').attr('id', 'step-0').attr('opacity', 0)
                 .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
-                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection))); 
+                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)));
                 // for `topojson.mesh` see also https://github.com/topojson/topojson-client/blob/master/README.md#mesh
             /* var counties_filter = function(a, b) { return (a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)); }; */
             map.append('path').attr('id', 'step-1')
                 .attr('stroke', '#aaa').attr('opacity', 0)
                 .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
-            
-            // MUY DIFERENTES
-            map.append("g").attr('id', 'step-2').attr('opacity', 0.7)
+
+            // MUY PARECIDOS
+            map.append("g").attr('id', 'step-2').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
@@ -54,6 +55,7 @@ d3.json("mexico.json")
                             '#FFF';
                 })
                 .attr("d", path);
+            // MUY DIFERENTES
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -64,9 +66,24 @@ d3.json("mexico.json")
                             d.properties.puntaje > 10  ? '#e7d4e8' :
                             d.properties.puntaje > 5  ? '#af8dc3' :
                             d.properties.puntaje >= 0  ? '#762a83' :
-                            '#000';
+                            '#FFF';
                 })
                 .attr("d", path);
+            // MAPA COMPLETO
+            map.append("g").attr('id', 'step-4').attr('opacity', 0)
+            .selectAll("path")
+            .data(topojson.feature(mexico, mexico.objects.collection).features)
+            .join("path")
+                .attr("fill", function(d,i){
+                    return d.properties.puntaje > 25 ? '#1b7837' :
+                				d.properties.puntaje > 20  ? '#7fbf7b' :
+                				d.properties.puntaje > 15  ? '#d9f0d3' :
+                				d.properties.puntaje > 10  ? '#e7d4e8' :
+                				d.properties.puntaje > 5  ? '#af8dc3' :
+                				d.properties.puntaje >= 0  ? '#762a83' :
+                							'#FFF';
+                })
+                .attr("d", path)
         })
     });
 
@@ -129,4 +146,3 @@ function init() {
 
 // kick things off
 init();
-
