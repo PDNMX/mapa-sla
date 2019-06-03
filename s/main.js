@@ -10,6 +10,9 @@ let color = d3.scaleOrdinal(d3.schemeSet3);
 let color2 = d3.scaleOrdinal(d3.schemePastel2);
 let mexico;
 
+let tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.properties.puntaje; });
+map.call(tip)
+
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
@@ -33,13 +36,13 @@ d3.json("mexico.json")
             .attr('d', path(topojson.feature(mexico, mexico.objects.collection)));
             /* var states_filter = function(a, b){return (a !== b);} */
             map.append('path').attr('id', 'step-0').attr('opacity', 0)
-                .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
+                .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)));
                 // for `topojson.mesh` see also https://github.com/topojson/topojson-client/blob/master/README.md#mesh
             /* var counties_filter = function(a, b) { return (a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)); }; */
             map.append('path').attr('id', 'step-1')
                 .attr('stroke', '#aaa').attr('opacity', 0)
-                .attr('stroke-width', 0.5).attr('vector-effect','non-scaling-stroke')
+                .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
 
             // MUY PARECIDOS
@@ -47,43 +50,46 @@ d3.json("mexico.json")
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-                .attr("fill", function(d,i){
-                    return d.properties.puntaje > 25 ? '#1b7837' :
-                            d.properties.puntaje > 20  ? '#7fbf7b' :
-                            d.properties.puntaje > 15  ? '#d9f0d3' :
-                            d.properties.puntaje > 10  ? '#FFF' :
-                            '#FFF';
-                })
-                .attr("d", path);
+            .attr("fill", function(d,i){
+                return d.properties.puntaje > 25 ? '#1b7837' :
+                        d.properties.puntaje > 20  ? '#7fbf7b' :
+                        d.properties.puntaje > 15  ? '#d9f0d3' :
+                        d.properties.puntaje > 10  ? '#FFF' :
+                        '#FFF';
+            })
+            .attr("d", path);
             // MUY DIFERENTES
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-                .attr("fill", function(d,i){
-                    /* return color(i); */
-                    return d.properties.puntaje > 15  ? '#FFF' :
-                            d.properties.puntaje > 10  ? '#e7d4e8' :
-                            d.properties.puntaje > 5  ? '#af8dc3' :
-                            d.properties.puntaje >= 0  ? '#762a83' :
-                            '#FFF';
-                })
-                .attr("d", path);
+            .attr("fill", function(d,i){
+                /* return color(i); */
+                return d.properties.puntaje > 15  ? '#FFF' :
+                        d.properties.puntaje > 10  ? '#e7d4e8' :
+                        d.properties.puntaje > 5  ? '#af8dc3' :
+                        d.properties.puntaje >= 0  ? '#762a83' :
+                        '#FFF';
+            })
+            .attr("d", path);
             // MAPA COMPLETO
+            
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-                .attr("fill", function(d,i){
-                    return d.properties.puntaje > 25 ? '#1b7837' :
-                				d.properties.puntaje > 20  ? '#7fbf7b' :
-                				d.properties.puntaje > 15  ? '#d9f0d3' :
-                				d.properties.puntaje > 10  ? '#e7d4e8' :
-                				d.properties.puntaje > 5  ? '#af8dc3' :
-                				d.properties.puntaje >= 0  ? '#762a83' :
-                							'#FFF';
-                })
-                .attr("d", path)
+            .attr("fill", function(d,i){
+                return d.properties.puntaje > 25 ? '#1b7837' :
+                            d.properties.puntaje > 20  ? '#7fbf7b' :
+                            d.properties.puntaje > 15  ? '#d9f0d3' :
+                            d.properties.puntaje > 10  ? '#e7d4e8' :
+                            d.properties.puntaje > 5  ? '#af8dc3' :
+                            d.properties.puntaje >= 0  ? '#762a83' :
+                                        '#FFF';
+            })
+            .attr("d", path)
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
         })
     });
 
@@ -121,11 +127,11 @@ function handleStepProgress(response) {
 
 function init() {
     // set random padding for different step heights (not required)
-    steps.forEach(function (step) {
+    /* steps.forEach(function (step) {
         let v = 100 + Math.floor(Math.random() * window.innerHeight / 4);
         // step.style.padding = v + 'px 0px';
         step.style.height = '300px';
-    });
+    }); */
 
     // 1. setup the scroller with the bare-bones options
     // this will also initialize trigger observations
