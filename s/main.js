@@ -10,7 +10,15 @@ let color = d3.scaleOrdinal(d3.schemeSet3);
 let color2 = d3.scaleOrdinal(d3.schemePastel2);
 let mexico;
 
-let tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.properties.puntaje; });
+var bounds = [[-124.408585, 32.534291], [-114.138271, 42.007768]],
+    p0 = projection([bounds[0][0], bounds[1][1]]),
+    p1 = projection([bounds[1][0], bounds[0][1]]);
+
+let tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .html(function(d) { return d.properties.nombre + '<br>Puntaje: ' + d.properties.puntaje })
+      .direction('s');
+
 map.call(tip)
 
 d3.json("mexico.json")
@@ -73,7 +81,6 @@ d3.json("mexico.json")
             })
             .attr("d", path);
             // MAPA COMPLETO
-            
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
