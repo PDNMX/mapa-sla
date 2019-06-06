@@ -1,18 +1,12 @@
 // see Observable US Map https://observablehq.com/@d3/u-s-map
 
 let projection = d3.geoMercator()
-    .scale(1400)
+    .scale(1200)
     .center([-102.34034978813841, 24.012062015793]);
 let path = d3.geoPath(projection);
 //var projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]); // use this if you have lon,lat
 let map = d3.select('#mexico');
-let color = d3.scaleOrdinal(d3.schemeSet3);
-let color2 = d3.scaleOrdinal(d3.schemePastel2);
 let mexico;
-
-var bounds = [[-124.408585, 32.534291], [-114.138271, 42.007768]],
-    p0 = projection([bounds[0][0], bounds[1][1]]),
-    p1 = projection([bounds[1][0], bounds[0][1]]);
 
 let tip = d3.tip()
       .attr('class', 'd3-tip')
@@ -97,6 +91,10 @@ d3.json("mexico.json")
             .attr("d", path)
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
+            .on('click', function(d,i){
+                var div = document.getElementById('masInfo');
+                div.innerHTML = `<p>Puntaje: </p><b>${d.properties.puntaje}</b>`;
+            })
         })
     });
 

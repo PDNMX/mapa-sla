@@ -65,7 +65,7 @@ a:hover {
 }
 
 #outro {
-  height: 1000px;
+  height: 1300px;
 }
 
 /* scrollama */
@@ -132,4 +132,9 @@ main#container {
   pointer-events: none;
   position: fixed !important;
   font-size: 11px;
+}
+
+#masInfo {
+    position: absolute;
+    padding: 0 0 0 90%;
 }
