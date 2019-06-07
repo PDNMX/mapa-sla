@@ -34,35 +34,16 @@ a:hover {
   border-bottom: 1px solid currentColor;
 }
 
-#intro {
-  max-width: 40rem;
-  margin: 1rem auto;
-  text-align: center;
-}
 
-.intro__overline {
-  font-size: 1.4rem;
-}
-
-.intro__hed {
-  font-size: 1.4rem;
-  /* margin: 1.5rem auto; */
+.titulo {
   text-transform: uppercase;
-  font-weight: 900;
   letter-spacing: 0.05em;
   padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
+  position: sticky;
 }
 
-.intro__dek {
-  font-size: 1.4rem;
-}
-
-/* demo */
-
-#intro {
-  margin-bottom: 300px;
-}
 
 #outro {
   height: 1300px;
@@ -97,15 +78,6 @@ a:hover {
   /* font-size: 1.5rem; */
 }
 
-/* nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  background: white;
-  padding: 1rem;
-} */
-
 main#container {
   position: relative;
 }
@@ -138,3 +110,4 @@ main#container {
     position: absolute;
     padding: 0 0 0 90%;
 }
+

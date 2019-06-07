@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+  <script src="https://d3js.org/d3-tile.v0.0.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    svg { width:100%; height: 100% }
+    .stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: .5;
+}
+  </style>
+</head>
+
+<body>
+  <script>
+    var svg = d3.select("body").append("svg");
+    
+    let projection = d3.geoMercator()
+    .scale(1200)
+    .center([-102.34034978813841, 24.012062015793]);
+    
+    var path = d3.geoPath(projection);
+    
+var tile = d3.tile()
+    .scale(projection.scale() * 2 * Math.PI)
+    .translate(projection([0, 0]));
+    
+    var url = "../s/mexico.json";
+
+
+d3.json(url).then(function(world) {
+var tiles = tile();
+var defs = svg.append("defs");
+
+defs.append("path")
+    .attr("id", "land")
+    .datum(topojson.feature(world, world.objects.collection))
+    .attr("d", path);
+
+    svg.append("g")
+    .attr("clip-path", "url(#clip)")
+    .selectAll("image")
+    .data(tiles)
+    .enter().append("image")
+    .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
+    .attr("width", Math.round(tiles.scale))
+    .attr("height", Math.round(tiles.scale))
+    .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
+    .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
+
+    svg.append("use")
+        .attr("xlink:href", "#land")
+        .attr("class", "stroke");
+});
+  </script>
+</body>

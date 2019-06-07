@@ -1,12 +1,15 @@
 // see Observable US Map https://observablehq.com/@d3/u-s-map
 
 let projection = d3.geoMercator()
-    .scale(1100)
+    .scale(1200)
     .center([-102.34034978813841, 24.012062015793]);
 let path = d3.geoPath(projection);
 //var projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]); // use this if you have lon,lat
 let map = d3.select('#mexico');
 let mexico;
+
+var width = Math.max(960, window.innerWidth),
+    height = Math.max(500, window.innerHeight);
 
 let tile = d3.tile()
     .scale(projection.scale() * 2 * Math.PI)
@@ -45,25 +48,25 @@ d3.json("mexico.json")
                 .attr('d', path(topojson.feature(mexico, mexico.objects.collection)));
 
             map.append("g")
-                .attr("clip-path", "url(#clip)")
+                /* .attr("clip-path", "url(#clip)") */
                 .selectAll("image")
                 .data(tiles)
                 .enter().append("image")
-                .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
+                /* .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; }) */
+                .attr("xlink:href", function(d) { return "https://cartodb-basemaps-"+ "abc"[d[1] % 3] + ".global.ssl.fastly.net/light_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
                 .attr("width", Math.round(tiles.scale))
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
         
-            map.append("use")
-                .attr("xlink:href", "#land")
-                .attr("class", "stroke");
+            /* map.append("use")
+                .attr("class", "stroke"); */
 
             map.append('path').attr('id', 'step-0').attr('opacity', 0)
                 .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)));
+
             map.append('path').attr('id', 'step-1')
-                .attr('stroke', '#aaa').attr('opacity', 0)
                 .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
 
@@ -80,6 +83,7 @@ d3.json("mexico.json")
                         '#FFF';
             })
             .attr("d", path);
+            
             // MUY DIFERENTES
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
@@ -93,6 +97,7 @@ d3.json("mexico.json")
                         d.properties.puntaje >= 0  ? '#762a83' :
                         '#FFF';
             })
+            /* .attr("fill-opacity", "0") */
             .attr("d", path);
             // MAPA COMPLETO
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
