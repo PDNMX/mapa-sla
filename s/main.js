@@ -139,6 +139,7 @@ function handleStepEnter(response) {
     response.element.classList.add('is-active');
     // show corresponding map step if scrolling down
     if (response.direction == 'down') map.select('#step-'+response.index).attr('opacity', 1);
+    if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 1);
 }
 
 function handleStepExit(response) {
@@ -148,6 +149,7 @@ function handleStepExit(response) {
     response.element.classList.remove('is-active');
     // hide corresponding map step if scrolling up
     if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 0);
+    if (response.direction == 'down'&& response.index !== 4) map.select('#step-'+response.index).attr('opacity', 0);
 }
 
 function handleStepProgress(response) {
@@ -157,11 +159,11 @@ function handleStepProgress(response) {
 
 function init() {
     // set random padding for different step heights (not required)
-    /* steps.forEach(function (step) {
+    steps.forEach(function (step) {
         let v = 100 + Math.floor(Math.random() * window.innerHeight / 4);
-        // step.style.padding = v + 'px 0px';
-        step.style.height = '300px';
-    }); */
+        step.style.padding = v + 'px 0px';
+        /* step.style.height = '300px'; */
+    });
 
     // 1. setup the scroller with the bare-bones options
     // this will also initialize trigger observations
@@ -169,7 +171,7 @@ function init() {
     scroller.setup({
         step: '.scroll__text .step',
         debug: true,
-        offset: 0.2,
+        offset: 0.8,
         // progress: true,
     })
     .onStepEnter(handleStepEnter)
