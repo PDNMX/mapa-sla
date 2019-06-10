@@ -25,15 +25,6 @@ a {
   font-weight: 300;
 }
 
-a,
-a:visited,
-a:hover {
-  color: #f30;
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-}
-
-
 .titulo {
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -45,7 +36,6 @@ a:hover {
   color: #fff;
 }
 
-
 #outro {
   height: 1300px;
 }
@@ -54,22 +44,23 @@ a:hover {
 
 #scroll {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.2);
-  margin-left: 10px;
+  /* background-color: rgba(0, 0, 0, 0.2); */ 
+  /* margin-left: 10px; */
   padding-bottom: 5px;
-  padding-top: 5px;
+  /* padding-top: 5px; */
 }
 
 .scroll__text {
   position: relative;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   margin: 0 auto;
-  /* width: 33%; */
+  width: 33%;
 }
 
 .step {
-  /* background-color: rgba(0, 0, 0, 0.2); */
-  margin: 2rem auto 4rem auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* margin: 2rem auto 4rem auto; */
+  /* margin: 0 0 100% 0; */
   /* border: 1px solid #333; */
 }
 
@@ -95,7 +86,7 @@ main#container {
 
 #scrolly {
   width: 100%;
-  padding: 0 75% 0 0;
+  /* padding: 0 75% 0 0; */
   margin: 2rem auto 4rem auto;
 }
 
@@ -141,11 +132,17 @@ main#container {
     font-size: 12px;
     margin: 2% 0 0 2%;
   }
+  .scroll__text {
+    width: unset;
+  }
+}
+
+.entidad {
+  cursor: pointer;
 }
 
 /* Animación de scroll */
-.scroll-downs {
-  /* position: absolute; */
+/* .scroll-downs {
   top: 0;
   right: 0;
   bottom: 0;
@@ -177,4 +174,4 @@ main#container {
   0% { opacity: 0; }
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
-}
+} */

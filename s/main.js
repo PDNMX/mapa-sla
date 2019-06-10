@@ -1,5 +1,3 @@
-// see Observable US Map https://observablehq.com/@d3/u-s-map
-
 let projection = d3.geoMercator()
     .scale(1200)
     .center([-102.34034978813841, 24.012062015793]);
@@ -59,11 +57,9 @@ d3.json("mexico.json")
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
 
-            /* map.append("use")
-                .attr("class", "stroke"); */
-
             map.append('path').attr('id', 'step-0').attr('opacity', 0)
                 .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
+                
                 .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)))
 
             map.append('path').attr('id', 'step-1')
@@ -82,7 +78,8 @@ d3.json("mexico.json")
                         d.properties.puntaje > 10  ? '#FFF' :
                         '#FFF';
             })
-            .attr("d", path);
+            .attr("d", path)
+            .attr('class', 'entidad');
 
             // MUY DIFERENTES
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
@@ -98,7 +95,9 @@ d3.json("mexico.json")
                         '#FFF';
             })
             /* .attr("fill-opacity", "0") */
-            .attr("d", path);
+            .attr("d", path)
+            .attr('class', 'entidad');
+            
             // MAPA COMPLETO
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
             .selectAll("path")
@@ -114,6 +113,7 @@ d3.json("mexico.json")
                                         '#FFF';
             })
             .attr("d", path)
+            .attr('class', 'entidad')
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on('click', function(d,i){
@@ -142,11 +142,6 @@ function handleStepEnter(response) {
     // show corresponding map step if scrolling down
     if (response.direction == 'down') map.select('#step-'+response.index).attr('opacity', 1);
     if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 1);
-    if (response.index === 0) {
-      // document.getElementById("scrollMe").remove();
-      document.getElementById("scrollMe").style.visibility = "hidden";
-
-    }
 }
 
 function handleStepExit(response) {
@@ -177,8 +172,8 @@ function init() {
     // 3. bind scrollama event handlers (this can be chained like below)
     scroller.setup({
         step: '.scroll__text .step',
-        debug: false,
-        offset: 0.5,
+        debug: true,
+        offset: 0.2,
         // progress: true,
     })
     .onStepEnter(handleStepEnter)
