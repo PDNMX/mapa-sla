@@ -58,13 +58,13 @@ d3.json("mexico.json")
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
-        
+
             /* map.append("use")
                 .attr("class", "stroke"); */
 
             map.append('path').attr('id', 'step-0').attr('opacity', 0)
                 .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
-                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)));
+                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)))
 
             map.append('path').attr('id', 'step-1')
                 .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
@@ -83,7 +83,7 @@ d3.json("mexico.json")
                         '#FFF';
             })
             .attr("d", path);
-            
+
             // MUY DIFERENTES
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
@@ -118,7 +118,9 @@ d3.json("mexico.json")
             .on('mouseout', tip.hide)
             .on('click', function(d,i){
                 var div = document.getElementById('masInfo');
-                div.innerHTML = `<p>Puntaje: </p><b>${d.properties.puntaje}</b>`;
+                div.innerHTML = `<p>Entidad: <b>${d.properties.nombre}</b></p>
+                                  <p>Puntaje: <b>${d.properties.puntaje}</b></p>
+                                  <p>Más info...</p>`;
             })
         })
     });
@@ -140,6 +142,11 @@ function handleStepEnter(response) {
     // show corresponding map step if scrolling down
     if (response.direction == 'down') map.select('#step-'+response.index).attr('opacity', 1);
     if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 1);
+    if (response.index === 0) {
+      // document.getElementById("scrollMe").remove();
+      document.getElementById("scrollMe").style.visibility = "hidden";
+
+    }
 }
 
 function handleStepExit(response) {
@@ -149,7 +156,7 @@ function handleStepExit(response) {
     response.element.classList.remove('is-active');
     // hide corresponding map step if scrolling up
     if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 0);
-    if (response.direction == 'down'&& response.index !== 4) map.select('#step-'+response.index).attr('opacity', 0);
+    // if (response.direction == 'down'&& response.index !== 4) map.select('#step-'+response.index).attr('opacity', 0);
 }
 
 function handleStepProgress(response) {
@@ -159,25 +166,24 @@ function handleStepProgress(response) {
 
 function init() {
     // set random padding for different step heights (not required)
-    steps.forEach(function (step) {
-        let v = 100 + Math.floor(Math.random() * window.innerHeight / 4);
-        step.style.padding = v + 'px 0px';
-        /* step.style.height = '300px'; */
-    });
+    // steps.forEach(function (step) {
+    //     // let v = 100 + Math.floor(Math.random() * window.innerHeight / 4);
+    //     // step.style.padding = v + 'px 0px';
+    //     step.style.height = '300px';
+    // });
 
     // 1. setup the scroller with the bare-bones options
     // this will also initialize trigger observations
     // 3. bind scrollama event handlers (this can be chained like below)
     scroller.setup({
         step: '.scroll__text .step',
-        debug: true,
-        offset: 0.8,
+        debug: false,
+        offset: 0.5,
         // progress: true,
     })
     .onStepEnter(handleStepEnter)
     .onStepExit(handleStepExit)
-        // .onStepProgress(handleStepProgress)
-
+    // .onStepProgress(handleStepProgress)
     // setup resize event
     window.addEventListener('resize', scroller.resize);
 }
