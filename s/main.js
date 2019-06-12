@@ -2,7 +2,6 @@ let projection = d3.geoMercator()
     .scale(1200)
     .center([-102.34034978813841, 24.012062015793]);
 let path = d3.geoPath(projection);
-//var projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]); // use this if you have lon,lat
 let map = d3.select('#mexico');
 let mexico;
 
@@ -41,47 +40,44 @@ d3.json("mexico.json")
             var tiles = tile();
             var defs = map.append("defs");
 
-            defs.append('path').attr('id', 'step-all')
-                .attr('vector-effect', 'non-scaling-stroke')
-                .attr('d', path(topojson.feature(mexico, mexico.objects.collection)));
-
+            // Agrega el mapa de carto DB
             map.append("g")
-                /* .attr("clip-path", "url(#clip)") */
                 .selectAll("image")
                 .data(tiles)
                 .enter().append("image")
                 /* .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; }) */
                 .attr("xlink:href", function(d) { return "https://cartodb-basemaps-"+ "abc"[d[1] % 3] + ".global.ssl.fastly.net/light_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
+                /* .attr("xlink:href", function(d) { return "https://cartocdn_" + "abc"[d[1] % 3] + ".global.ssl.fastly.net/base-midnight/"+ d[2] +"/"+ d[0] +"/"+ d[1] +"@2x.png"; }) */
                 .attr("width", Math.round(tiles.scale))
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
 
-            map.append('path').attr('id', 'step-0').attr('opacity', 0)
-                .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
-                
-                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection)))
-
-            map.append('path').attr('id', 'step-1')
-                .attr('stroke-width', 0).attr('vector-effect','non-scaling-stroke')
-                .attr('d', path(topojson.mesh(mexico, mexico.objects.collection )));
-
-            // MUY PARECIDOS
+            // REMARCANDO LAS ENTIDADES - PASO 1
+            map.append("g").attr('id', 'step-1').attr('opacity', 0)
+                .selectAll("path")
+                .data(topojson.feature(mexico, mexico.objects.collection).features)
+                .join("path")
+                .attr("stroke-width", 0.8)
+                .attr("fill-opacity",0)
+                .attr("d", path);
+            
+                // MUY PARECIDOS - PASO 2
             map.append("g").attr('id', 'step-2').attr('opacity', 0)
-            .selectAll("path")
-            .data(topojson.feature(mexico, mexico.objects.collection).features)
-            .join("path")
-            .attr("fill", function(d,i){
-                return d.properties.puntaje > 25 ? '#1b7837' :
-                        d.properties.puntaje > 20  ? '#7fbf7b' :
-                        d.properties.puntaje > 15  ? '#d9f0d3' :
-                        d.properties.puntaje > 10  ? '#FFF' :
-                        '#FFF';
-            })
-            .attr("d", path)
-            .attr('class', 'entidad');
+                .selectAll("path")
+                .data(topojson.feature(mexico, mexico.objects.collection).features)
+                .join("path")
+                .attr("fill", function(d,i){
+                    return d.properties.puntaje > 25 ? '#1b7837' :
+                            d.properties.puntaje > 20  ? '#7fbf7b' :
+                            d.properties.puntaje > 15  ? '#d9f0d3' :
+                            d.properties.puntaje > 10  ? '#FFF' :
+                            '#FFF';
+                })
+                .attr("stroke-width", 0.8)
+                .attr("d", path);
 
-            // MUY DIFERENTES
+            // MUY DIFERENTES PASO 3 
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -94,11 +90,10 @@ d3.json("mexico.json")
                         d.properties.puntaje >= 0  ? '#762a83' :
                         '#FFF';
             })
-            /* .attr("fill-opacity", "0") */
-            .attr("d", path)
-            .attr('class', 'entidad');
+            .attr("stroke-width", 0.8)
+            .attr("d", path);
             
-            // MAPA COMPLETO
+            // MAPA COMPLETO PASO 4 
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -113,6 +108,7 @@ d3.json("mexico.json")
                                         '#FFF';
             })
             .attr("d", path)
+            .attr("stroke-width", 0.8)
             .attr('class', 'entidad')
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
@@ -121,7 +117,7 @@ d3.json("mexico.json")
                 div.innerHTML = `<p>Entidad: <b>${d.properties.nombre}</b></p>
                                   <p>Puntaje: <b>${d.properties.puntaje}</b></p>
                                   <p>Más info...</p>`;
-            })
+            });
         })
     });
 
@@ -140,8 +136,16 @@ function handleStepEnter(response) {
     // add to color to current step
     response.element.classList.add('is-active');
     // show corresponding map step if scrolling down
-    if (response.direction == 'down') map.select('#step-'+response.index).attr('opacity', 1);
-    if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 1);
+    let stepAnterior = parseInt(response.index) - 1;
+    let stepPosterior = parseInt(response.index) + 1;
+    if (response.direction == 'down') {
+        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
+        map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
+    };
+    if (response.direction == 'up') {
+        map.select('#step-'+stepPosterior).transition().duration(1500).attr('opacity', 0)
+        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
+    }
 }
 
 function handleStepExit(response) {
@@ -150,8 +154,8 @@ function handleStepExit(response) {
     // remove color from current step
     response.element.classList.remove('is-active');
     // hide corresponding map step if scrolling up
-    if (response.direction == 'up') map.select('#step-'+response.index).attr('opacity', 0);
-    // if (response.direction == 'down'&& response.index !== 4) map.select('#step-'+response.index).attr('opacity', 0);
+    // if (response.direction == 'up') map.select('#step-'+response.index).transition().duration(2000).attr('opacity', 0);
+    if (response.direction == 'down'&& response.index !== 4) map.select('#step-'+response.index).attr('opacity', 0);
 }
 
 function handleStepProgress(response) {
@@ -173,11 +177,11 @@ function init() {
     scroller.setup({
         step: '.scroll__text .step',
         debug: true,
-        offset: 0.2,
+        offset: 0.3,
         // progress: true,
     })
     .onStepEnter(handleStepEnter)
-    .onStepExit(handleStepExit)
+    //.onStepExit(handleStepExit)
     // .onStepProgress(handleStepProgress)
     // setup resize event
     window.addEventListener('resize', scroller.resize);
