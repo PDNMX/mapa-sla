@@ -22,12 +22,14 @@
 
 		<div id='sticky'>
 			<h2 class='titulo'>¿Qué tan parecida a la de la PDN es mi normatividad?</h2>
-			<div id="masInfo">
-				<!-- <div id="scrollMe" class="scroll-downs">
-				  <div class="mousey">
-				    <div class="scroller"></div>
-				  </div>
-				</div> -->
+			<!-- <div id="masInfo"></div> -->
+			<div id="masInfo" hidden>
+				<p class="legend"><span class="key-dot casi_nada_similar"></span>Casi nada similar</p>
+				<div><p class="legend"><span class="key-dot muy_poco_similar"></span>Muy poco similar</p></div>
+				<div><p class="legend"><span class="key-dot poco_similar "></span>Poco similar</p></div>
+				<div><p class="legend"><span class="key-dot similar"></span>Similar</p></div>
+				<div><p class="legend"><span class="key-dot bastante_similar"></span>Bastante similar</p></div>
+				<div><p class="legend"><span class="key-dot muy_similar "></span>Muy similar</p></div>
 			</div>
 			<svg viewBox="0 0 960 600" style="width:100%;height:auto;">
 			  <g id='mexico' fill="none" stroke="#000" stroke-linejoin="round" stroke-linecap="round"></g>
@@ -48,10 +50,19 @@
 
 					<div class='step' data-step='2' style='margin-bottom: 100%;'>
 						<p>Codificamos cada artículo para generar puntajes de similitud con la normatividad de la Plataforma Digital Nacional (PDN): las verdes son las entidades que tienen las leyes más parecidas a las de la PDN.</p>
+						<div>
+							<div> <p class="legend"><span class="key-dot similar"></span>Similar</p> </div>
+							<div> <p class="legend"><span class="key-dot bastante_similar"></span>Bastante similar</p> </div>
+							<div> <p class="legend"><span class="key-dot muy_similar "></span>Muy similar</p> </div>
+						</div>
 					</div>
 					<div class='step' data-step='3' style='margin-bottom: 100%;'>
 						<p>Las moradas tienen las leyes diferentes. Esto no es malo, cada entidad tiene condiciones distintas.</p>
-						<div id='anchor-3'></div>
+						<div>
+							<div> <p class="legend"><span class="key-dot casi_nada_similar"></span>Casi nada similar</p> </div>
+							<div> <p class="legend"><span class="key-dot muy_poco_similar"></span>Muy poco similar</p> </div>
+							<div> <p class="legend"><span class="key-dot poco_similar "></span>Poco similar</p> </div>
+						</div>
 					</div>
 					<div class='step' data-step='4'>
 						<p>Da clic en cualquier entidad federativa para conocer más de la normatividad de su plataforma o sistema de información</p>
@@ -65,16 +76,12 @@
 		</div>
 
 	</main>
-
 	<!-- <script src='https://unpkg.com/intersection-observer@0.5.0/intersection-observer.js'></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/2.0.0/scrollama.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 	<script src="//d3js.org/d3-tile.v0.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-	<script src="https://d3js.org/d3-scale.v3.min.js"></script>
-	<script src="https://bl.ocks.org/zanarmstrong/raw/0b6276e033142ce95f7f374e20f1c1a7/colorbrewer.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 

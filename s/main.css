@@ -147,6 +147,48 @@ main#container {
   cursor: pointer;
 }
 
+.leyendaColores {
+  font-size: 8px;
+  font-weight: 300;
+  color: #2a2a2a;
+}
+
+#leyendaVerde {
+  height: 400px;
+  width: 400px;
+}
+
+.key-dot {
+  display: inline-block;
+  height: 15px;
+  margin-right: .5em;
+  width: 15px;
+  border-radius: 50%;
+}
+
+.legend {
+  padding: unset !important;
+  text-align: left !important;
+}
+.casi_nada_similar { 
+  background: #762a83;
+}
+.muy_poco_similar { 
+  background: #af8dc3;
+}
+.poco_similar { 
+  background: #e7d4e8;
+}
+.similar { 
+  background: #d9f0d3;
+}
+.bastante_similar { 
+  background: #7fbf7b;
+}
+.muy_similar { 
+  background: #1b7837;
+}
+
 /* Animación de scroll */
 /* .scroll-downs {
   top: 0;

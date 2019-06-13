@@ -20,19 +20,6 @@ let tip = d3.tip()
 map.call(tip);
 
 
-// Color legend.
-var colorScale = d3.scaleQuantize()
-    .domain([ 1, 10 ])
-    .range(colorbrewer.Blues[9]);
-
-var colorLegend = d3.legendColor()
-    .labelFormat(d3.format(".0f"))
-    .scale(colorScale)
-    .shapePadding(5)
-    .shapeWidth(50)
-    .shapeHeight(20)
-    .labelOffset(12);
-
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
@@ -74,8 +61,7 @@ d3.json("mexico.json")
                 .join("path")
                 .attr("stroke-width", 0.8)
                 .attr("fill-opacity",0)
-                .attr("d", path)
-                .call(colorLegend);
+                .attr("d", path);
             
             // MUY PARECIDOS - PASO 2
             map.append("g").attr('id', 'step-2').attr('opacity', 0)
@@ -133,8 +119,6 @@ d3.json("mexico.json")
                                   <p>Puntaje: <b>${d.properties.puntaje}</b></p>
                                   <p>Más info...</p>`;
             });
-            map.append("g").call(colorLegend).attr('opacity', 0);
-
         })
     });
 
@@ -156,6 +140,9 @@ function handleStepEnter(response) {
     let stepAnterior = parseInt(response.index) - 1;
     let stepPosterior = parseInt(response.index) + 1;
     if (response.direction == 'down') {
+        if (response.index === 4) {
+            document.getElementById("masInfo").style.display = "block";
+        }
         map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
     };
