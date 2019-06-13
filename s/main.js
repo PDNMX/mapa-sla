@@ -17,7 +17,21 @@ let tip = d3.tip()
       .html(function(d) { return d.properties.nombre + '<br>Puntaje: ' + d.properties.puntaje })
       .direction('s');
 
-map.call(tip)
+map.call(tip);
+
+
+// Color legend.
+var colorScale = d3.scaleQuantize()
+    .domain([ 1, 10 ])
+    .range(colorbrewer.Blues[9]);
+
+var colorLegend = d3.legendColor()
+    .labelFormat(d3.format(".0f"))
+    .scale(colorScale)
+    .shapePadding(5)
+    .shapeWidth(50)
+    .shapeHeight(20)
+    .labelOffset(12);
 
 d3.json("mexico.json")
     .then(function(data) {
@@ -38,7 +52,7 @@ d3.json("mexico.json")
             return(mexico);
         }).then(function(mexico){
             var tiles = tile();
-            var defs = map.append("defs");
+            /* var defs = map.append("defs"); */
 
             // Agrega el mapa de carto DB
             map.append("g")
@@ -52,7 +66,7 @@ d3.json("mexico.json")
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
-
+            
             // REMARCANDO LAS ENTIDADES - PASO 1
             map.append("g").attr('id', 'step-1').attr('opacity', 0)
                 .selectAll("path")
@@ -60,9 +74,10 @@ d3.json("mexico.json")
                 .join("path")
                 .attr("stroke-width", 0.8)
                 .attr("fill-opacity",0)
-                .attr("d", path);
+                .attr("d", path)
+                .call(colorLegend);
             
-                // MUY PARECIDOS - PASO 2
+            // MUY PARECIDOS - PASO 2
             map.append("g").attr('id', 'step-2').attr('opacity', 0)
                 .selectAll("path")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -118,6 +133,8 @@ d3.json("mexico.json")
                                   <p>Puntaje: <b>${d.properties.puntaje}</b></p>
                                   <p>Más info...</p>`;
             });
+            map.append("g").call(colorLegend).attr('opacity', 0);
+
         })
     });
 
