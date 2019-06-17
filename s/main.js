@@ -32,6 +32,8 @@ d3.json("mexico.json")
                 jsonHugo.feed.entry.forEach(function(newElement) {
                     if(parseInt(element.properties.clave)===parseInt(newElement.gsx$claveagee.$t)){
                         element.properties.puntaje=parseInt(newElement.gsx$puntaje.$t);
+                        element.properties.similitud=newElement.gsx$similitud.$t;
+                        element.properties.resumen=newElement.gsx$resumen.$t;
                     }
                 });
             });
@@ -114,10 +116,57 @@ d3.json("mexico.json")
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on('click', function(d,i){
-                var div = document.getElementById('masInfo');
-                div.innerHTML = `<p>Entidad: <b>${d.properties.nombre}</b></p>
-                                  <p>Puntaje: <b>${d.properties.puntaje}</b></p>
-                                  <p>Más info...</p>`;
+                let modal = new RModal(document.getElementById('modal'), {
+                    content:
+                    `<div class="modal-content">
+                        <div class="modal-header">
+                            <strong>${d.properties.nombre}</strong>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="modal.close();">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+    
+                        <div class="modal-body">
+                            <div>
+                                <h3>Puntaje: ${d.properties.puntaje}</h3>
+                                <p>Resumen: ${d.properties.resumen}</p>
+                                <h3>Similitud: ${d.properties.similitud}</h3>
+                            </div>
+                        </div>
+    
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-dark btn-sm" type="submit" onclick="modal.close();">Cerrar</button>
+                        </div>
+                    </div>`,
+                    beforeOpen: function(next) {
+                        document.getElementById("scroll").style.opacity=0; 
+                        next();
+                    }
+                    , afterOpen: function() {
+                        console.log('opened');
+                    }
+    
+                    , beforeClose: function(next) {
+                        
+                        next();
+                    }
+                    , afterClose: function() {
+                        document.getElementById("scroll").style.opacity=1; 
+                        console.log('closed');
+                    }
+                    /* , bodyClass: 'modal-open' */
+                    , dialogClass: 'modal-dialog'
+                    /* , dialogOpenClass: 'animated fadeIn'
+                    , dialogCloseClass: 'animated fadeOut' */
+                    , focus: true
+                    , focusElements: ['input.form-control', 'textarea', 'button.btn-primary']
+                    , escapeClose: true
+                });
+                /* document.addEventListener('keydown', function(ev) {
+                    modal.keydown(ev);
+                }, false); */
+                window.modal = modal;
+                modal.open();
             });
         })
     });
