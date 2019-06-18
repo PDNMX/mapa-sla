@@ -14,7 +14,7 @@ let tile = d3.tile()
 
 let tip = d3.tip()
       .attr('class', 'd3-tip')
-      .html(function(d) { return d.properties.nombre + '<br>Puntaje: ' + d.properties.puntaje })
+      .html(function(d) { return d.properties.nombre })
       .direction('s');
 
 map.call(tip);
@@ -49,12 +49,14 @@ d3.json("mexico.json")
                 .data(tiles)
                 .enter().append("image")
                 /* .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; }) */
-                .attr("xlink:href", function(d) { return "https://cartodb-basemaps-"+ "abc"[d[1] % 3] + ".global.ssl.fastly.net/light_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
+/*                 .attr("xlink:href", function(d) { return "https://cartodb-basemaps-" + "abc"[d[1] % 3] + ".global.ssl.fastly.net/voyager_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
+ */                .attr("xlink:href", function(d) { return "https://"+ "abc"[d[1] % 3] +".basemaps.cartocdn.com/rastertiles/voyager_nolabels/"+d[2]+"/"+d[0]+"/"+d[1]+"@2x.png"; })
                 /* .attr("xlink:href", function(d) { return "https://cartocdn_" + "abc"[d[1] % 3] + ".global.ssl.fastly.net/base-midnight/"+ d[2] +"/"+ d[0] +"/"+ d[1] +"@2x.png"; }) */
                 .attr("width", Math.round(tiles.scale))
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
-                .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
+                .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); })
+                .attr('opacity', 1);
             
             // REMARCANDO LAS ENTIDADES - PASO 1
             map.append("g").attr('id', 'step-1').attr('opacity', 0)
@@ -116,22 +118,31 @@ d3.json("mexico.json")
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on('click', function(d,i){
+                let color = d.properties.puntaje > 25 ? '#1b7837' :
+                            d.properties.puntaje > 20  ? '#7fbf7b' :
+                            d.properties.puntaje > 15  ? '#d9f0d3' :
+                            d.properties.puntaje > 10  ? '#e7d4e8' :
+                            d.properties.puntaje > 5  ? '#af8dc3' :
+                            d.properties.puntaje >= 0  ? '#762a83' :
+                            '#FFF';
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
                     `<div class="modal-content">
-                        <div class="modal-header">
-                            <strong>${d.properties.nombre}</strong>
+                        <div class="modal-header" style="background-color: ${color};">
+                            <h1 style="color: #fff;"><strong>${d.properties.nombre}</strong></h1>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="modal.close();">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-    
                         <div class="modal-body">
                             <div>
-                                <h3>Puntaje: ${d.properties.puntaje}</h3>
-                                <p>Resumen: ${d.properties.resumen}</p>
+                                <h3>Puntaje: ${d.properties.puntaje}/30</h3>
                                 <h3>Similitud: ${d.properties.similitud}</h3>
+                                <br>
+                                <p>${d.properties.resumen}</p>
                             </div>
+                            <br>
+                            <a class="btn btn-warning btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">CSV</a>
                         </div>
     
                         <div class="modal-footer">
@@ -196,6 +207,9 @@ function handleStepEnter(response) {
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
     };
     if (response.direction == 'up') {
+        if (response.index === 3) {
+            document.getElementById("masInfo").style.display = "none";
+        }
         map.select('#step-'+stepPosterior).transition().duration(1500).attr('opacity', 0)
         map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
     }
@@ -229,7 +243,7 @@ function init() {
     // 3. bind scrollama event handlers (this can be chained like below)
     scroller.setup({
         step: '.scroll__text .step',
-        debug: true,
+        debug: false,
         offset: 0.3,
         // progress: true,
     })
