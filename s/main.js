@@ -159,6 +159,7 @@ d3.json("mexico.json")
                             </div>
                             <br>
                             <a class="btn btn-warning btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
+                            <a class="btn btn-warning btn-sm" href="https://google.com.mx">Descargar Metodología</a>
                         </div>
 
                         <div class="modal-footer">
