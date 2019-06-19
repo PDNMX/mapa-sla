@@ -56,10 +56,10 @@ a {
   background-color: rgba(102, 102, 102, 0.9);
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid;
+  /* border: 1px solid; */
   box-shadow: -1px -1px 5px -1px rgba(0, 0, 0, 0.19),
     3px 4px 5px 0px rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .txtStep {
@@ -89,8 +89,8 @@ main#container {
   padding: 12px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  border-radius: 4px;
-  box-shadow: 2px 1px 4px gray;
+  /* border-radius: 4px; */
+  /* box-shadow: 2px 1px 4px gray; */
   pointer-events: none;
   position: fixed !important;
   font-size: 11px;
@@ -134,9 +134,13 @@ main#container {
     width: 90%;
   }
   .legend {
-    padding: 0 0 5px 0 !important;
+    padding: 0 0 5px 15px !important;
     color: #fff;
   }
+  #firstStep{
+    margin-top: -200px !important;
+  }
+
 }
 
 .entidad {
@@ -193,4 +197,54 @@ main#container {
 
 #footer {
   background: #2a2a2a;
+}
+
+#divScrollme {
+  position: relative;
+  padding-bottom: 60px
+}
+#scrollme {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+#firstStep{
+  margin-top: -900px;
 }
