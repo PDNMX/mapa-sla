@@ -57,16 +57,17 @@ d3.json("mexico.json")
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
                 .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); })
                 .attr('opacity', 1);
-            
+
             // REMARCANDO LAS ENTIDADES - PASO 1
             map.append("g").attr('id', 'step-1').attr('opacity', 0)
                 .selectAll("path")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
-                .attr("stroke-width", 0.8)
+                .attr("stroke-width", 1.3)
+                .attr("stroke", "#212529")
                 .attr("fill-opacity",0)
                 .attr("d", path);
-            
+
             // MUY PARECIDOS - PASO 2
             map.append("g").attr('id', 'step-2').attr('opacity', 0)
                 .selectAll("path")
@@ -80,9 +81,10 @@ d3.json("mexico.json")
                             '#FFF';
                 })
                 .attr("stroke-width", 0.8)
+                .attr("stroke", "#212529")
                 .attr("d", path);
 
-            // MUY DIFERENTES PASO 3 
+            // MUY DIFERENTES PASO 3
             map.append("g").attr('id', 'step-3').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -96,9 +98,10 @@ d3.json("mexico.json")
                         '#FFF';
             })
             .attr("stroke-width", 0.8)
+            .attr("stroke", "#212529")
             .attr("d", path);
-            
-            // MAPA COMPLETO PASO 4 
+
+            // MAPA COMPLETO PASO 4
             map.append("g").attr('id', 'step-4').attr('opacity', 0)
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
@@ -114,6 +117,7 @@ d3.json("mexico.json")
             })
             .attr("d", path)
             .attr("stroke-width", 0.8)
+            .attr("stroke", "#212529")
             .attr('class', 'entidad')
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
@@ -136,33 +140,53 @@ d3.json("mexico.json")
                         </div>
                         <div class="modal-body">
                             <div>
-                                <h3>Puntaje: ${d.properties.puntaje}/30</h3>
-                                <h3>Similitud: ${d.properties.similitud}</h3>
-                                <br>
-                                <p>${d.properties.resumen}</p>
+                              <div class="svg-item">
+                                <svg width="100%" height="100%" viewBox="0 0 40 40" class="donut">
+                                  <circle class="donut-hole" cx="20" cy="20" r="15.91549430918954" fill="#fff"></circle>
+                                  <circle class="donut-ring" cx="20" cy="20" r="15.91549430918954" fill="transparent" stroke-width="3.5"></circle>
+                                  <circle id="donaPuntaje" class="donut-segment" cx="20" cy="20" r="15.91549430918954" fill="transparent" stroke-width="3.5" stroke-dasharray="85 15" stroke-dashoffset="25"></circle>
+                                  <g id="txtPuntaje" class="donut-text">
+                                    <text y="50%" transform="translate(0, 2)">
+                                      <tspan x="50%" text-anchor="middle" class="donut-percent">${d.properties.puntaje}/30</tspan>
+                                    </text>
+                                    <text y="60%" transform="translate(0, 2)">
+                                      <tspan x="50%" text-anchor="middle" class="donut-data">${d.properties.similitud}</tspan>
+                                    </text>
+                                  </g>
+                                </svg>
+                              </div>
+                              <p>${d.properties.resumen}</p>
                             </div>
                             <br>
-                            <a class="btn btn-warning btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">CSV</a>
+                            <a class="btn btn-warning btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
                         </div>
-    
+
                         <div class="modal-footer">
                             <button class="btn btn-outline-dark btn-sm" type="submit" onclick="modal.close();">Cerrar</button>
                         </div>
                     </div>`,
                     beforeOpen: function(next) {
-                        document.getElementById("scroll").style.opacity=0; 
+                        document.getElementById("scroll").style.opacity=0;
+                        txtPuntaje.style.fill=color;
+                        donaPuntaje.style.stroke=color;
+                        // document.getElementById("donaPuntaje").style.strokeDasharray = "50 50"
+                        // var keyframes = findKeyframesRule("stroke-dasharray");
+                        // keyframes.deleteRule("100%");
+                        // keyframes.insertRule("100% {  stroke-dasharray:: 15, 85; }");
+                        // document.getElementsByClassName("donut-text").style.fill="green";
                         next();
                     }
                     , afterOpen: function() {
                         console.log('opened');
                     }
-    
+
                     , beforeClose: function(next) {
-                        
+
                         next();
                     }
                     , afterClose: function() {
-                        document.getElementById("scroll").style.opacity=1; 
+                        document.getElementById("scroll").style.opacity=1;
+                        document.getElementById("scroll").style.opacity=1;
                         console.log('closed');
                     }
                     /* , bodyClass: 'modal-open' */
@@ -253,6 +277,28 @@ function init() {
     // setup resize event
     window.addEventListener('resize', scroller.resize);
 }
+
+// search the CSSOM for a specific -webkit-keyframe rule
+function findKeyframesRule(rule)
+    {
+        // gather all stylesheets into an array
+        var ss = document.styleSheets;
+
+        // loop through the stylesheets
+        for (var i = 0; i < ss.length; ++i) {
+
+            // loop through all the rules
+            for (var j = 0; j < ss[i].cssRules.length; ++j) {
+
+                // find the -webkit-keyframe rule whose name matches our passed over parameter and return that rule
+                if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE && ss[i].cssRules[j].name == rule)
+                    return ss[i].cssRules[j];
+            }
+        }
+
+        // rule not found
+        return null;
+    }
 
 // kick things off
 init();
