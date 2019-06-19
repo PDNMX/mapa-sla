@@ -100,9 +100,10 @@ main#container {
 
 #masInfo {
   position: absolute;
-  padding: 10px 0 0 85%;
+  margin: 10px 0 0 85%;
   display: none;
   opacity: 0.9;
+  float:right;
 }
 
 @media screen and (max-width: 1024px) {
@@ -129,6 +130,7 @@ main#container {
   }
   .scroll__text {
     width: unset;
+    
   }
   .modal .modal-dialog {
     width: 90%;
@@ -177,22 +179,22 @@ main#container {
   color: rgba(0, 0, 0, 0.87);
 }
 .casi_nada_similar {
-  background: #762a83;
+  background: #e7692e;
 }
 .muy_poco_similar {
-  background: #af8dc3;
+  background: #ff995b;
 }
 .poco_similar {
-  background: #e7d4e8;
+  background: #ffca8a;
 }
 .similar {
-  background: #d9f0d3;
+  background: #aaffff;
 }
 .bastante_similar {
-  background: #7fbf7b;
+  background: #73e4ff;
 }
 .muy_similar {
-  background: #1b7837;
+  background: #2eb2e7;
 }
 
 #footer {
@@ -279,7 +281,7 @@ main#container {
 
 .donut-segment {
     transform-origin: center;
-    stroke: #FF6200;
+    stroke: #FFF;
     animation: donut1 3s;
 }
 
@@ -310,8 +312,7 @@ main#container {
 
 
 .donut-text {
-    font-family: Arial, Helvetica, sans-serif;
-    fill: #FF6200;
+   fill: #FFF;
 }
 
 .donut-label {

@@ -74,9 +74,9 @@ d3.json("mexico.json")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
                 .attr("fill", function(d,i){
-                    return d.properties.puntaje > 25 ? '#1b7837' :
-                            d.properties.puntaje > 20  ? '#7fbf7b' :
-                            d.properties.puntaje > 15  ? '#d9f0d3' :
+                    return d.properties.puntaje > 25 ? '#2eb2e7' :
+                            d.properties.puntaje > 20  ? '#73e4ff' :
+                            d.properties.puntaje > 15  ? '#aaffff' :
                             d.properties.puntaje > 10  ? '#FFF' :
                             '#FFF';
                 })
@@ -92,9 +92,9 @@ d3.json("mexico.json")
             .attr("fill", function(d,i){
                 /* return color(i); */
                 return d.properties.puntaje > 15  ? '#FFF' :
-                        d.properties.puntaje > 10  ? '#e7d4e8' :
-                        d.properties.puntaje > 5  ? '#af8dc3' :
-                        d.properties.puntaje >= 0  ? '#762a83' :
+                        d.properties.puntaje > 10  ? '#ffca8a' :
+                        d.properties.puntaje > 5  ? '#ff995b' :
+                        d.properties.puntaje >= 0  ? '#e7692e' :
                         '#FFF';
             })
             .attr("stroke-width", 0.8)
@@ -107,12 +107,12 @@ d3.json("mexico.json")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
             .attr("fill", function(d,i){
-                return d.properties.puntaje > 25 ? '#1b7837' :
-                            d.properties.puntaje > 20  ? '#7fbf7b' :
-                            d.properties.puntaje > 15  ? '#d9f0d3' :
-                            d.properties.puntaje > 10  ? '#e7d4e8' :
-                            d.properties.puntaje > 5  ? '#af8dc3' :
-                            d.properties.puntaje >= 0  ? '#762a83' :
+                return d.properties.puntaje > 25 ? '#2eb2e7' :
+                            d.properties.puntaje > 20  ? '#73e4ff' :
+                            d.properties.puntaje > 15  ? '#aaffff' :
+                            d.properties.puntaje > 10  ? '#ffca8a' :
+                            d.properties.puntaje > 5  ? '#ff995b' :
+                            d.properties.puntaje >= 0  ? '#e7692e' :
                                         '#FFF';
             })
             .attr("d", path)
@@ -122,12 +122,12 @@ d3.json("mexico.json")
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on('click', function(d,i){
-                let color = d.properties.puntaje > 25 ? '#1b7837' :
-                            d.properties.puntaje > 20  ? '#7fbf7b' :
-                            d.properties.puntaje > 15  ? '#d9f0d3' :
-                            d.properties.puntaje > 10  ? '#e7d4e8' :
-                            d.properties.puntaje > 5  ? '#af8dc3' :
-                            d.properties.puntaje >= 0  ? '#762a83' :
+                let color = d.properties.puntaje > 25 ? '#2eb2e7' :
+                            d.properties.puntaje > 20  ? '#73e4ff' :
+                            d.properties.puntaje > 15  ? '#aaffff' :
+                            d.properties.puntaje > 10  ? '#ffca8a' :
+                            d.properties.puntaje > 5  ? '#ff995b' :
+                            d.properties.puntaje >= 0  ? '#e7692e' :
                             '#FFF';
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
