@@ -63,9 +63,9 @@ d3.json("mexico.json")
                 .selectAll("path")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
-                .attr("stroke-width", 1.3)
+                .attr("stroke-width", 0.5)
+                .attr("fill-opacity","0")
                 .attr("stroke", "#212529")
-                .attr("fill-opacity",0)
                 .attr("d", path);
 
             // MUY PARECIDOS - PASO 2
@@ -77,10 +77,10 @@ d3.json("mexico.json")
                     return d.properties.puntaje > 25 ? '#2eb2e7' :
                             d.properties.puntaje > 20  ? '#73e4ff' :
                             d.properties.puntaje > 15  ? '#aaffff' :
-                            d.properties.puntaje > 10  ? '#FFF' :
-                            '#FFF';
+                            d.properties.puntaje > 10  ? 'rgba(255, 255, 255, 0)' :
+                            'rgba(255, 255, 255, 0)';
                 })
-                .attr("stroke-width", 0.8)
+                .attr("stroke-width", 0.3)
                 .attr("stroke", "#212529")
                 .attr("d", path);
 
@@ -91,13 +91,13 @@ d3.json("mexico.json")
             .join("path")
             .attr("fill", function(d,i){
                 /* return color(i); */
-                return d.properties.puntaje > 15  ? '#FFF' :
+                return d.properties.puntaje > 15  ? 'rgba(255, 255, 255, 0)' :
                         d.properties.puntaje > 10  ? '#ffca8a' :
                         d.properties.puntaje > 5  ? '#ff995b' :
                         d.properties.puntaje >= 0  ? '#e7692e' :
-                        '#FFF';
+                        'rgba(255, 255, 255, 0)';
             })
-            .attr("stroke-width", 0.8)
+            .attr("stroke-width", 0.3)
             .attr("stroke", "#212529")
             .attr("d", path);
 
@@ -113,10 +113,10 @@ d3.json("mexico.json")
                             d.properties.puntaje > 10  ? '#ffca8a' :
                             d.properties.puntaje > 5  ? '#ff995b' :
                             d.properties.puntaje >= 0  ? '#e7692e' :
-                                        '#FFF';
+                                        'rgba(255, 255, 255, 0)';
             })
             .attr("d", path)
-            .attr("stroke-width", 0.8)
+            .attr("stroke-width", 0.3)
             .attr("stroke", "#212529")
             .attr('class', 'entidad')
             .on('mouseover', tip.show)
