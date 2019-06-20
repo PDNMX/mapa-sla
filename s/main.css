@@ -110,10 +110,6 @@ main#container {
   #scrolly {
     padding: 10% 10% 10% 10%;
   }
-  #masInfo {
-    position: absolute;
-    padding: 55% 0 0 0;
-  }
   #scroll {
     margin-left: 0px;
     margin-right: 0px;
@@ -125,8 +121,9 @@ main#container {
     padding-right: 5px;
   }
   #masInfo {
+    position: absolute;
+    margin: 60% 0 0 2%;
     font-size: 12px;
-    margin: 2% 0 0 2%;
   }
   .scroll__text {
     width: unset;
