@@ -158,8 +158,16 @@ d3.json("mexico.json")
                               <p>${d.properties.resumen}</p>
                             </div>
                             <br>
-                            <a class="btn btn-warning btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
-                            <a class="btn btn-warning btn-sm" href="https://google.com.mx">Descargar Metodología</a>
+                            <div class="text-center">
+                            <small>Sistemas:</small>
+                                <br>
+                                <a id="s1" class="disabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/1_icono.e354d998.svg"></img></a>
+                                <a id="s2" class="disabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/2_icono.ef41eb28.svg"></img></a>
+                                <a id="s3" class="enabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/3_icono.a875e0f5.svg"></img></a>
+                                <br>
+                                <a class="btn btn-secondary btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
+                                <a class="btn btn-secondary btn-sm" href="https://google.com.mx">Descargar Metodología</a>
+                            </div>
                         </div>
 
                         <div class="modal-footer">

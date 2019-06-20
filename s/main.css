@@ -142,6 +142,13 @@ main#container {
   #firstStep{
     margin-top: -200px !important;
   }
+  .svg-item {
+    width: 150px !important;
+  }
+  .iconos-sistemas {
+    max-width: 80px !important;
+
+  }
 
 }
 
@@ -253,7 +260,7 @@ main#container {
 
 
 .svg-item {
-    width: 100%;
+    width: 200px;
     font-size: 16px;
     margin: 0 auto;
     animation: donutfade 1s;
@@ -266,12 +273,6 @@ main#container {
     }
     100% {
         opacity: 1;
-    }
-}
-
-@media (min-width: 992px) {
-    .svg-item {
-        width: 50%;
     }
 }
 
@@ -339,4 +340,21 @@ main#container {
     color:#666;
     fill: #666;
     animation: donutfadelong 1s;
+}
+
+.iconos-sistemas {
+  max-width: 120px;
+
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.enabled {
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 1;
 }
