@@ -64,7 +64,7 @@ d3.json("mexico.json")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
                 .attr("stroke-width", 0.5)
-                .attr("fill-opacity","0")
+                .attr("fill-opacity",0)
                 .attr("stroke", "#212529")
                 .attr("d", path);
 
@@ -185,30 +185,18 @@ d3.json("mexico.json")
                         // document.getElementsByClassName("donut-text").style.fill="green";
                         next();
                     }
-                    , afterOpen: function() {
-                        console.log('opened');
-                    }
-
                     , beforeClose: function(next) {
-
                         next();
                     }
                     , afterClose: function() {
                         document.getElementById("scroll").style.opacity=1;
-                        document.getElementById("scroll").style.opacity=1;
-                        console.log('closed');
                     }
                     /* , bodyClass: 'modal-open' */
-                    , dialogClass: 'modal-dialog'
+                    /* , dialogClass: 'modal-dialog' */
                     /* , dialogOpenClass: 'animated fadeIn'
                     , dialogCloseClass: 'animated fadeOut' */
-                    , focus: true
-                    , focusElements: ['input.form-control', 'textarea', 'button.btn-primary']
                     , escapeClose: true
                 });
-                /* document.addEventListener('keydown', function(ev) {
-                    modal.keydown(ev);
-                }, false); */
                 window.modal = modal;
                 modal.open();
             });
