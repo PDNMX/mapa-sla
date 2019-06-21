@@ -48,10 +48,7 @@ d3.json("mexico.json")
                 .selectAll("image")
                 .data(tiles)
                 .enter().append("image")
-                /* .attr("xlink:href", function(d) { return "http://" + "abc"[d[1] % 3] + ".tile.openstreetmap.org/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; }) */
-/*                 .attr("xlink:href", function(d) { return "https://cartodb-basemaps-" + "abc"[d[1] % 3] + ".global.ssl.fastly.net/voyager_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
- */                .attr("xlink:href", function(d) { return "https://"+ "abc"[d[1] % 3] +".basemaps.cartocdn.com/rastertiles/voyager_nolabels/"+d[2]+"/"+d[0]+"/"+d[1]+"@2x.png"; })
-                /* .attr("xlink:href", function(d) { return "https://cartocdn_" + "abc"[d[1] % 3] + ".global.ssl.fastly.net/base-midnight/"+ d[2] +"/"+ d[0] +"/"+ d[1] +"@2x.png"; }) */
+                .attr("xlink:href", function(d) { return "https://"+ "abc"[d[1] % 3] +".basemaps.cartocdn.com/rastertiles/voyager_nolabels/"+d[2]+"/"+d[0]+"/"+d[1]+"@2x.png"; })
                 .attr("width", Math.round(tiles.scale))
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
@@ -166,7 +163,7 @@ d3.json("mexico.json")
                             color: color,
                             // This has to be the same size as the maximum width to
                             // prevent clipping
-                            strokeWidth: 4,
+                            strokeWidth: 6,
                             trailWidth: 1,
                             easing: 'easeInOut',
                             duration: 1200,
@@ -175,15 +172,12 @@ d3.json("mexico.json")
                             },
                             from: { color: color, width: 1 },
                             to: { color: color, width: 4 },
-                            // Set default step function for all animate calls
                             step: function(state, circle) {
-                                /* circle.path.setAttribute('stroke', state.color);
-                                circle.path.setAttribute('stroke-width', state.width); */
                                 var value = Math.round(circle.value() * 100);
                                 if (value === 0) {
                                 circle.setText('');
                                 } else {
-                                circle.setText(d.properties.puntaje);
+                                circle.setText(`${d.properties.puntaje}<br><p id="txtSimilitud">${d.properties.similitud}</p>`);
                                 }
                             
                             }
