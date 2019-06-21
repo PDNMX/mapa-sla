@@ -354,3 +354,11 @@ main#container {
   cursor: pointer;
   opacity: 1;
 }
+
+#progreso {
+  margin: auto;
+  width: 180px;
+  height: 180px;
+  position: relative;
+  padding: 20px;
+}
