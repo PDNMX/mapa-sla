@@ -89,7 +89,7 @@ d3.json("mexico.json")
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-            .attr("fill", function(d,i){
+            .attr("fill", function(d){
                 /* return color(i); */
                 return d.properties.puntaje > 15  ? 'rgba(255, 255, 255, 0)' :
                         d.properties.puntaje > 10  ? '#ffca8a' :
@@ -106,7 +106,7 @@ d3.json("mexico.json")
             .selectAll("path")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
-            .attr("fill", function(d,i){
+            .attr("fill", function(d){
                 return d.properties.puntaje > 25 ? '#2eb2e7' :
                             d.properties.puntaje > 20  ? '#73e4ff' :
                             d.properties.puntaje > 15  ? '#aaffff' :
@@ -121,7 +121,7 @@ d3.json("mexico.json")
             .attr('class', 'entidad')
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
-            .on('click', function(d,i){
+            .on('click', function(d){
                 let color = d.properties.puntaje > 25 ? '#2eb2e7' :
                             d.properties.puntaje > 20  ? '#73e4ff' :
                             d.properties.puntaje > 15  ? '#aaffff' :
