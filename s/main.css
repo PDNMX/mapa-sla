@@ -6,7 +6,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans SC', sans-serif !important;
+  font-family: "Noto Sans SC", sans-serif !important;
 }
 
 body {
@@ -95,7 +95,9 @@ main#container {
   position: fixed !important;
   font-size: 11px;
   box-sizing: border-box;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 #masInfo {
@@ -103,7 +105,7 @@ main#container {
   margin: 10px 0 0 85%;
   display: none;
   opacity: 0.9;
-  float:right;
+  float: right;
 }
 
 @media screen and (max-width: 1024px) {
@@ -127,7 +129,6 @@ main#container {
   }
   .scroll__text {
     width: unset;
-    
   }
   .modal .modal-dialog {
     width: 90%;
@@ -136,7 +137,7 @@ main#container {
     padding: 0 0 5px 15px !important;
     color: #fff;
   }
-  #firstStep{
+  #firstStep {
     margin-top: -200px !important;
   }
   .svg-item {
@@ -144,9 +145,7 @@ main#container {
   }
   .iconos-sistemas {
     max-width: 80px !important;
-
   }
-
 }
 
 .entidad {
@@ -175,7 +174,7 @@ main#container {
 
 .legend {
   color: #fff;
-  padding: 0 0 5px 30px;
+  margin: 0 0 5px 30px;
   text-align: left !important;
 }
 
@@ -207,7 +206,7 @@ main#container {
 
 #divScrollme {
   position: relative;
-  padding-bottom: 60px
+  padding-bottom: 60px;
 }
 #scrollme {
   position: absolute;
@@ -251,102 +250,101 @@ main#container {
   }
 }
 
-#firstStep{
+#firstStep {
   margin-top: -950px;
 }
 
 .svg-item {
-    width: 200px;
-    font-size: 16px;
-    margin: 0 auto;
-    animation: donutfade 1s;
+  width: 200px;
+  font-size: 16px;
+  margin: 0 auto;
+  animation: donutfade 1s;
 }
 
 @keyframes donutfade {
   /* this applies to the whole svg item wrapper */
-    0% {
-        opacity: .2;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .donut-ring {
-    stroke: #EBEBEB;
+  stroke: #ebebeb;
 }
 
 .donut-segment {
-    transform-origin: center;
-    stroke: #FFF;
-    animation: donut1 3s;
+  transform-origin: center;
+  stroke: #fff;
+  animation: donut1 3s;
 }
 
-
-.segment-1{fill:#ccc;}
+.segment-1 {
+  fill: #ccc;
+}
 
 .donut-percent {
-    animation: donutfadelong 1s;
+  animation: donutfadelong 1s;
 }
 
 @keyframes donutfadelong {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes donut1 {
-    0% {
-        stroke-dasharray: 0, 100;
-    }
-    100% {
-        stroke-dasharray: 85, 15;
-    }
+  0% {
+    stroke-dasharray: 0, 100;
+  }
+  100% {
+    stroke-dasharray: 85, 15;
+  }
 }
 
-
 .donut-text {
-   fill: #FFF;
+  fill: #fff;
 }
 
 .donut-label {
-    font-size: 0.28em;
-    font-weight: 700;
-    line-height: 1;
-    fill: #000;
-    transform: translateY(0.25em);
+  font-size: 0.28em;
+  font-weight: 700;
+  line-height: 1;
+  fill: #000;
+  transform: translateY(0.25em);
 }
 
 .donut-percent {
-    font-size: 0.5em;
-    line-height: 1;
-    transform: translateY(0.5em);
-    font-weight: bold;
+  font-size: 0.5em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  font-weight: bold;
 }
 
 .donut-data {
-    font-size: 0.18em;
-    line-height: 1;
-    transform: translateY(0.5em);
-    text-align: center;
-    text-anchor: middle;
-    color:#666;
-    fill: #666;
-    animation: donutfadelong 1s;
+  font-size: 0.18em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  text-align: center;
+  text-anchor: middle;
+  color: #666;
+  fill: #666;
+  animation: donutfadelong 1s;
 }
 
 .iconos-sistemas {
   max-width: 120px;
-
 }
 
 .disabled {
   pointer-events: none;
   cursor: default;
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .enabled {

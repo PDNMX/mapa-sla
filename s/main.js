@@ -34,6 +34,9 @@ d3.json("mexico.json")
                         element.properties.puntaje=parseInt(newElement.gsx$puntaje.$t);
                         element.properties.similitud=newElement.gsx$similitud.$t;
                         element.properties.resumen=newElement.gsx$resumen.$t;
+                        element.properties.s1=newElement.gsx$s1liga.$t;
+                        element.properties.s2=newElement.gsx$s2liga.$t;
+                        element.properties.s3=newElement.gsx$s3liga.$t;
                     }
                 });
             });
@@ -126,6 +129,10 @@ d3.json("mexico.json")
                             d.properties.puntaje > 5  ? '#ff995b' :
                             d.properties.puntaje >= 0  ? '#e7692e' :
                             '#FFF';
+                
+                let s1 = d.properties.s1 !== "" ? "enabled" : "disabled";
+                let s2 = d.properties.s2 !== "" ? "enabled" : "disabled";
+                let s3 = d.properties.s3 !== "" ? "enabled" : "disabled";
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
                     `<div class="modal-content">
@@ -144,9 +151,9 @@ d3.json("mexico.json")
                             <div class="text-center">
                             <small>Sistemas:</small>
                                 <br>
-                                <a id="s1" class="disabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/1_icono.e354d998.svg"></img></a>
-                                <a id="s2" class="disabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/2_icono.ef41eb28.svg"></img></a>
-                                <a id="s3" class="enabled" href="#"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/3_icono.a875e0f5.svg"></img></a>
+                                <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/1_icono.e354d998.svg"></img></a>
+                                <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/2_icono.ef41eb28.svg"></img></a>
+                                <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/3_icono.a875e0f5.svg"></img></a>
                                 <br>
                                 <a class="btn btn-secondary btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
                                 <a class="btn btn-secondary btn-sm" href="https://google.com.mx">Descargar Metodología</a>
