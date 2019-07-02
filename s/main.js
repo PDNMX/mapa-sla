@@ -137,7 +137,7 @@ d3.json("mexico.json")
                     content:
                     `<div class="modal-content">
                         <div class="modal-header" style="background-color: ${color};">
-                            <h1 style="color: #fff;"><strong>${d.properties.nombre}</strong></h1>
+                            <h2 style="color: #fff;"><strong>${d.properties.nombre}</strong></h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="modal.close();">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -155,8 +155,10 @@ d3.json("mexico.json")
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/2_icono.ef41eb28.svg"></img></a>
                                 <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/3_icono.a875e0f5.svg"></img></a>
                                 <br>
+
                                 <a class="btn btn-secondary btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
                                 <a class="btn btn-secondary btn-sm" href="https://google.com.mx">Descargar Metodología</a>
+
                             </div>
                         </div>
 
