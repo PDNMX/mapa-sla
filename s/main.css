@@ -75,11 +75,12 @@ main#container {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  background-color: #d5e8eb;
 }
 
 #scrolly {
   width: 100%;
-  margin: 2rem auto 4rem auto;
+  margin: 2rem auto 0 auto;
 }
 
 /* d3-tip */
@@ -124,7 +125,7 @@ main#container {
   }
   #masInfo {
     position: absolute;
-    margin: 60% 0 0 2%;
+    margin: 55% 0 0 2%;
     font-size: 12px;
   }
   .scroll__text {
@@ -134,7 +135,8 @@ main#container {
     width: 90%;
   }
   .legend {
-    padding: 0 0 5px 15px !important;
+    padding: 0 0 5px 10px !important;
+    margin: 0 0 5px 0px !important;
     color: #fff;
   }
   #firstStep {
@@ -145,6 +147,9 @@ main#container {
   }
   .iconos-sistemas {
     max-width: 80px !important;
+  }
+  #intro {
+    margin-top: 0px !important;
   }
 }
 
@@ -251,7 +256,7 @@ main#container {
 }
 
 #intro {
-  margin-top: -950px;
+  margin-top: -700px;
 }
 
 .svg-item {
