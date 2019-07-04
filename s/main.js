@@ -151,9 +151,9 @@ d3.json("mexico.json")
                             <div class="text-center">
                             <small>Sistemas:</small>
                                 <br>
-                                <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/1_icono.e354d998.svg"></img></a>
-                                <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/2_icono.ef41eb28.svg"></img></a>
-                                <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="https://plataformadigitalnacional.org/static/media/3_icono.a875e0f5.svg"></img></a>
+                                <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="img/s1.svg"></img></a>
+                                <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
+                                <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="img/s3.svg"></img></a>
                                 <br>
 
                                 <a class="btn btn-secondary btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
