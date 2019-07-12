@@ -51,7 +51,8 @@ d3.json("mexico.json")
                 .selectAll("image")
                 .data(tiles)
                 .enter().append("image")
-                .attr("xlink:href", function(d) { return "https://"+ "abc"[d[1] % 3] +".basemaps.cartocdn.com/rastertiles/voyager_nolabels/"+d[2]+"/"+d[0]+"/"+d[1]+"@2x.png"; })
+                /* .attr("xlink:href", function(d) { return "https://"+ "abc"[d[1] % 3] +".basemaps.cartocdn.com/rastertiles/voyager_nolabels/"+d[2]+"/"+d[0]+"/"+d[1]+"@2x.png"; }) */
+                .attr("xlink:href", function(d) { return "https://cartodb-basemaps-"+ "abc"[d[1] % 3] + ".global.ssl.fastly.net/light_nolabels/"+ d[2] +"/"+ + d[0] +"/"+ d[1] + "@2x.png"; })
                 .attr("width", Math.round(tiles.scale))
                 .attr("height", Math.round(tiles.scale))
                 .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
@@ -74,9 +75,9 @@ d3.json("mexico.json")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
                 .attr("fill", function(d,i){
-                    return d.properties.puntaje > 25 ? '#2eb2e7' :
-                            d.properties.puntaje > 20  ? '#73e4ff' :
-                            d.properties.puntaje > 15  ? '#aaffff' :
+                    return d.properties.puntaje > 25 ? '#6e8396' :
+                            d.properties.puntaje > 20  ? '#a8bed0' :
+                            d.properties.puntaje > 15  ? '#dfebf4' :
                             d.properties.puntaje > 10  ? 'rgba(255, 255, 255, 0)' :
                             'rgba(255, 255, 255, 0)';
                 })
@@ -92,9 +93,9 @@ d3.json("mexico.json")
             .attr("fill", function(d){
                 /* return color(i); */
                 return d.properties.puntaje > 15  ? 'rgba(255, 255, 255, 0)' :
-                        d.properties.puntaje > 10  ? '#ffca8a' :
-                        d.properties.puntaje > 5  ? '#ff995b' :
-                        d.properties.puntaje >= 0  ? '#e7692e' :
+                        d.properties.puntaje > 10  ? '#ffd1ca' :
+                        d.properties.puntaje > 5  ? '#f08e88' :
+                        d.properties.puntaje >= 0  ? '#944b4f' :
                         'rgba(255, 255, 255, 0)';
             })
             .attr("stroke-width", 0.3)
@@ -107,12 +108,12 @@ d3.json("mexico.json")
             .data(topojson.feature(mexico, mexico.objects.collection).features)
             .join("path")
             .attr("fill", function(d){
-                return d.properties.puntaje > 25 ? '#2eb2e7' :
-                            d.properties.puntaje > 20  ? '#73e4ff' :
-                            d.properties.puntaje > 15  ? '#aaffff' :
-                            d.properties.puntaje > 10  ? '#ffca8a' :
-                            d.properties.puntaje > 5  ? '#ff995b' :
-                            d.properties.puntaje >= 0  ? '#e7692e' :
+                return d.properties.puntaje > 25 ? '#6e8396' :
+                            d.properties.puntaje > 20  ? '#a8bed0' :
+                            d.properties.puntaje > 15  ? '#dfebf4' :
+                            d.properties.puntaje > 10  ? '#ffd1ca' :
+                            d.properties.puntaje > 5  ? '#f08e88' :
+                            d.properties.puntaje >= 0  ? '#944b4f' :
                                         'rgba(255, 255, 255, 0)';
             })
             .attr("d", path)
@@ -122,12 +123,12 @@ d3.json("mexico.json")
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on('click', function(d){
-                let color = d.properties.puntaje > 25 ? '#2eb2e7' :
-                            d.properties.puntaje > 20  ? '#73e4ff' :
-                            d.properties.puntaje > 15  ? '#aaffff' :
-                            d.properties.puntaje > 10  ? '#ffca8a' :
-                            d.properties.puntaje > 5  ? '#ff995b' :
-                            d.properties.puntaje >= 0  ? '#e7692e' :
+                let color = d.properties.puntaje > 25 ? '#6e8396' :
+                            d.properties.puntaje > 20  ? '#a8bed0' :
+                            d.properties.puntaje > 15  ? '#dfebf4' :
+                            d.properties.puntaje > 10  ? '#ffd1ca' :
+                            d.properties.puntaje > 5  ? '#f08e88' :
+                            d.properties.puntaje >= 0  ? '#944b4f' :
                             '#FFF';
                 
                 let s1 = d.properties.s1 !== "" ? "enabled" : "disabled";
@@ -235,7 +236,7 @@ function handleStepEnter(response) {
         if (response.index === 4) {
             document.getElementById("masInfo").style.display = "block";
         }
-        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
+        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75).attr('shape-rendering', 'crispEdges')
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
     };
     if (response.direction == 'up') {
