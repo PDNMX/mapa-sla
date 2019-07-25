@@ -51,6 +51,10 @@ a {
   position: relative;
   margin: 0 auto;
   width: 33%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .step {
@@ -61,6 +65,8 @@ a {
   box-shadow: -1px -1px 5px -1px rgba(0, 0, 0, 0.19),
     3px 4px 5px 0px rgba(0, 0, 0, 0.19);
   /* border-radius: 5px; */
+  z-index: 3;
+  position: relative;
 }
 
 .txtStep {
@@ -77,6 +83,7 @@ main#container {
   position: sticky;
   top: 0;
   background-color: #d5dadc;
+  z-index: 1;
 }
 
 #scrolly {
@@ -272,6 +279,8 @@ main#container {
 #intro {
   margin-top: -1100px;
   padding-top: 70%;
+  z-index: 3;
+  position: relative;
 }
 
 .svg-item {
@@ -436,3 +445,12 @@ main#container {
   padding-bottom: 64px;
 }
 
+
+.particles-js-canvas-el {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}

@@ -20,7 +20,7 @@
 	<div id="modal" class="modal">
 		<div class="modal-dialog animated"></div>
 	</div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgba(102, 102, 102, 1) !important;">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgba(102, 102, 102, 1) !important; z-index: 2; position: relative;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -50,53 +50,52 @@
 		<div id='scrolly'>
 			<section id='scroll'>
 				<div class='scroll__text' >
-				<section id='intro' style='margin-bottom: 100%;' align="center">
-					
-					<h1 class='intro__hed'>Plataformas Digitales y Sistemas de Información Locales</h1>
-					<p class='intro__overline'>
-						<a href='https://plataformadigitalnacional.org/'>https://plataformadigitalnacional.org/</a>
-					</p>
-					<p class='intro__dek'>
-						
-						
-					</p>
-					<br>
-					<div class="text-center">
-						<small class="text-center" style="color: #2a2a2a; text-align: center;">Desplazar hacia abajo</small>
-						<div id="divScrollme" class="center"><span id="scrollme"></span></div>
-					</div>
-				</section>
-					<div id="firstStep" class='step' data-step='0' style='margin-bottom: 100%;'>
-						<p class="txtStep">El Sistema Nacional Anticorrupción (SNA) fue creado por medio de una reforma constitucional. Las entidades federativas están obligadas a hacer sus propias leyes y modificaciones para que cada una tenga su Sistema Local Anticorrupción (Artículo cuarto transitorio; Decreto por el que se reforman, adicionan y derogan diversas disposiciones de la Constitución Política de los Estados Unidos Mexicanos, en materia de combate a la corrupción; Diario Oficial de la Federación; 27 de mayo de 2015).</p>
-						
-					</div>
-					<div class='step' data-step='1' style='margin-bottom: 100%;'>
-						<p class="txtStep">Estas leyes son diversas porque cada entidad federativa es única. Además de su Sistema Anticorrupción, cada entidad debe desarrollar su Plataforma Digital o Sistema de Información Local para generar su inteligencia anticorrupción y conectarse a nivel nacional.</p>
-					</div>
+					<section id='intro' style='margin-bottom: 100%;' align="center">
+						<h1 class='intro__hed'>Plataformas Digitales y Sistemas de Información Locales</h1>
+						<p class='intro__overline'>
+							<a href='https://plataformadigitalnacional.org/'>https://plataformadigitalnacional.org/</a>
+						</p>
+						<p class='intro__dek'>						
+						</p>
+						<br>
+						<div class="text-center">
+							<small class="text-center" style="color: #2a2a2a; text-align: center;">Desplazar hacia abajo</small>
+							<div id="divScrollme" class="center"><span id="scrollme"></span></div>
+						</div>
+					</section>
+						<div id="firstStep" class='step' data-step='0' style='margin-bottom: 100%;'>
+							<p class="txtStep">El Sistema Nacional Anticorrupción (SNA) fue creado por medio de una reforma constitucional. Las entidades federativas están obligadas a hacer sus propias leyes y modificaciones para que cada una tenga su Sistema Local Anticorrupción (Artículo cuarto transitorio; Decreto por el que se reforman, adicionan y derogan diversas disposiciones de la Constitución Política de los Estados Unidos Mexicanos, en materia de combate a la corrupción; Diario Oficial de la Federación; 27 de mayo de 2015).</p>
+							
+						</div>
+						<div class='step' data-step='1' style='margin-bottom: 100%;'>
+							<p class="txtStep">Estas leyes son diversas porque cada entidad federativa es única. Además de su Sistema Anticorrupción, cada entidad debe desarrollar su Plataforma Digital o Sistema de Información Local para generar su inteligencia anticorrupción y conectarse a nivel nacional.</p>
+						</div>
 
-					<div class='step' data-step='2' style='margin-bottom: 100%;'>
-						<p class="txtStep">A partir de las leyes de los Sistemas Locales Anticorrupción, hicimos este mapa interactivo. Codificamos cada artículo referente a las Plataformas Digitales y Sistemas de Información Locales para generar puntajes de similitud con la normatividad de la PDN: las azules son las entidades que tienen las leyes más parecidas a la de la PDN.</p>
-						<div>
-							<p class="legend"><span class="key-dot similar"></span>Similar</p>
-							<p class="legend"><span class="key-dot bastante_similar"></span>Bastante similar</p>
-							<p class="legend"><span class="key-dot muy_similar "></span>Muy similar</p>
+						<div class='step' data-step='2' style='margin-bottom: 100%;'>
+							<p class="txtStep">A partir de las leyes de los Sistemas Locales Anticorrupción, hicimos este mapa interactivo. Codificamos cada artículo referente a las Plataformas Digitales y Sistemas de Información Locales para generar puntajes de similitud con la normatividad de la PDN: las azules son las entidades que tienen las leyes más parecidas a la de la PDN.</p>
+							<div>
+								<p class="legend"><span class="key-dot similar"></span>Similar</p>
+								<p class="legend"><span class="key-dot bastante_similar"></span>Bastante similar</p>
+								<p class="legend"><span class="key-dot muy_similar "></span>Muy similar</p>
+							</div>
 						</div>
-					</div>
-					<div class='step' data-step='3' style='margin-bottom: 100%;'>
-						<p class="txtStep">Las naranjas tienen las leyes menos parecidas a la ley federal.</p>
-						<div class="row">
-						<div class="col-md-7 col-md-offset-5">
-							<p class="legend"><span class="key-dot casi_nada_similar"></span>Casi nada similar</p>
-							<p class="legend"><span class="key-dot muy_poco_similar"></span>Muy poco similar</p>
-							<p class="legend"><span class="key-dot poco_similar "></span>Poco similar</p>
+						<div class='step' data-step='3' style='margin-bottom: 100%;'>
+							<p class="txtStep">Las naranjas tienen las leyes menos parecidas a la ley federal.</p>
+							<div class="row">
+							<div class="col-md-7 col-md-offset-5">
+								<p class="legend"><span class="key-dot casi_nada_similar"></span>Casi nada similar</p>
+								<p class="legend"><span class="key-dot muy_poco_similar"></span>Muy poco similar</p>
+								<p class="legend"><span class="key-dot poco_similar "></span>Poco similar</p>
+							</div>
 						</div>
-					</div>
-					</div>
-					<div class='step' data-step='4'>
-						<p class="txtStep">Da clic en cualquier entidad federativa para conocer más de la normatividad de su plataforma o sistema de información.</p>
-					</div>
-				</div>
+						</div>
+						<div class='step' data-step='4'>
+							<p class="txtStep">Da clic en cualquier entidad federativa para conocer más de la normatividad de su plataforma o sistema de información.</p>
+						</div>
+					
+			</div>
 			</section>
+			
 			<section id='outro'></section>
 		</div>
 
@@ -145,6 +144,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 	<script src="//d3js.org/d3-tile.v0.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+	<script src="https://vincentgarreau.com/particles.js/assets/_build/js/lib/particles.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 
