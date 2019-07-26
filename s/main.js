@@ -246,6 +246,9 @@ function handleStepEnter(response) {
         if (response.index === 3) {
             document.getElementById("masInfo").style.display = "none";
         }
+        if (response.index === 4) {
+            document.querySelector("canvas.particles-js-canvas-el").style.zIndex = 2;
+        }
         map.select('#step-'+stepPosterior).transition().duration(1500).attr('opacity', 0)
         map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
     }
