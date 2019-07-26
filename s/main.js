@@ -236,6 +236,8 @@ function handleStepEnter(response) {
     if (response.direction == 'down') {
         if (response.index === 4) {
             document.getElementById("masInfo").style.display = "block";
+            document.querySelector("canvas.particles-js-canvas-el").style.zIndex = -1;
+            
         }
         map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75).attr('shape-rendering', 'geometricPrecision')
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
@@ -336,12 +338,8 @@ particlesJS("sticky", {
             },
             "polygon": {
                 "nb_sides": 5
-            },
-            "image": {
-                "src": "img/github.svg",
-                "width": 100,
-                "height": 100
             }
+            
         },
         "opacity": {
             "value": 0.3551164387345227,
