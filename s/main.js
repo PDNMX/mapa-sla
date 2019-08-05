@@ -37,6 +37,8 @@ d3.json("mexico.json")
                         element.properties.s1=newElement.gsx$s1liga.$t;
                         element.properties.s2=newElement.gsx$s2liga.$t;
                         element.properties.s3=newElement.gsx$s3liga.$t;
+                        element.properties.s3=newElement.gsx$s3liga.$t;
+                        element.properties.nombre=newElement.gsx$estado.$t;
                     }
                 });
             });
