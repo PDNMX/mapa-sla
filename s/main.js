@@ -338,8 +338,8 @@ particlesJS("sticky", {
         "shape": {
             "type": "circle",
             "stroke": {
-                "width": 0,
-                "color": "#fff"
+                "width": 0.5,
+                "color": "#666666"
             },
             "polygon": {
                 "nb_sides": 5
@@ -410,7 +410,7 @@ particlesJS("sticky", {
             },
             "bubble": {
                 "distance": 400,
-                "size": 11,
+                "size": 10,
                 "duration": 1,
                 "opacity": 8,
                 "speed": 3
