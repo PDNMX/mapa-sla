@@ -6,10 +6,9 @@ ADD ./s /mapa-sla
 WORKDIR /mapa-sla
 
 RUN yarn add global yarn \
-&& yarn global add serve \
-&& yarn global add pm2 \
+&& yarn global add http-server \
 && yarn cache clean
 
-EXPOSE 5000
+EXPOSE 8080
 
-CMD ["pm2-runtime", "serve"]
+CMD ["http-server"]
