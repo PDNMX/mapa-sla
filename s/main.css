@@ -1,17 +1,9 @@
-/* * {
-  box-sizing: border-box;
-} */
-
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans SC", sans-serif !important;
-  background-color: rgba(102, 102, 102, 1);;
-}
-
-body {
-  /* min-height: 1280px; */
+  background-color: rgba(102, 102, 102, 1);
   font-weight: 300;
   color: #2a2a2a;
 }
@@ -89,6 +81,7 @@ main#container {
 #scrolly {
   width: 100%;
   margin: 2rem auto 0 auto;
+
 }
 
 /* d3-tip */
@@ -111,62 +104,22 @@ main#container {
 
 #masInfo {
   position: absolute;
-  margin: 20px 0 0 85%;
+  /* margin: 20px 20px 0 0; */
+  top: 10px;
+  right: 20px;
   display: none;
   opacity: 0.9;
   float: right;
 }
 
-@media screen and (max-width: 1024px) {
-  body {
-    background-color: white;
-  }
-  #outro {
-    height: 700px;
-  }
-  #scrolly {
-    padding: 10% 10% 0 10%;
-  }
-  #scroll {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .titulo {
-    letter-spacing: 0.05em;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  #masInfo {
-    position: absolute;
-    margin: 55% 0 0 2%;
-    font-size: 12px;
-  }
-  .scroll__text {
-    width: unset;
-  }
-  .modal .modal-dialog {
-    width: 90%;
-  }
-  .legend {
-    padding: 0 0 5px 10px !important;
-    margin: 0 0 5px 0px !important;
-    color: #fff;
-  }
-  #firstStep {
-    margin-top: -200px !important;
-  }
-  .svg-item {
-    width: 150px !important;
-  }
-  .iconos-sistemas {
-    max-width: 80px !important;
-  }
-  #intro {
-    margin-top: 0px !important;
-    padding-top: 0 !important;
-  }
+#descargas{
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: none;
+  /* float: left; */
 }
+
 
 .entidad {
   cursor: pointer;
@@ -440,6 +393,16 @@ main#container {
   margin-bottom: 16px;
 }
 
+a.txtFooter {
+  margin-bottom: 16px;
+  color: #fff;
+
+}
+
+a.txtFooter:hover {
+  text-decoration: none;
+}
+
 #footer1 {
   padding-top: 94px;
   padding-bottom: 64px;
@@ -453,4 +416,15 @@ main#container {
   left: 0;
   right: 0;
   z-index: 2;
+}
+
+.Hide {
+  /* opacity: 0.2; */
+  transform: translateY(-10%);
+  animation: slide-up .3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }

@@ -19,6 +19,21 @@ let tip = d3.tip()
 
 map.call(tip);
 
+// animations CSS
+function animateCSS(element, animationName, callback) {
+    const node = document.querySelector(element)
+    node.classList.add('animated', animationName)
+
+    function handleAnimationEnd() {
+        node.classList.remove('animated', animationName)
+        node.removeEventListener('animationend', handleAnimationEnd)
+
+        if (typeof callback === 'function') callback()
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd)
+}
+
 
 d3.json("mexico.json")
     .then(function(data) {
@@ -67,9 +82,9 @@ d3.json("mexico.json")
                 .data(topojson.feature(mexico, mexico.objects.collection).features)
                 .join("path")
                 .attr("stroke-width", 0.6)
-                .attr("stroke-opacity", 0.5)
+                .attr("stroke-opacity", 1)
                 .attr("fill-opacity",0)
-                .attr("stroke", "#34b3eb")
+                .attr("stroke", "#666666")
                 .attr("d", path);
 
             // MUY PARECIDOS - PASO 2
@@ -158,11 +173,6 @@ d3.json("mexico.json")
                                 <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="img/s1.svg"></img></a>
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
                                 <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="img/s3.svg"></img></a>
-                                <br>
-
-                                <a class="btn btn-secondary btn-sm" href="https://docs.google.com/spreadsheets/d/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/export?format=csv">Descargar CSV</a>
-                                <a class="btn btn-secondary btn-sm" href="https://google.com.mx">Descargar Metodología</a>
-
                             </div>
                         </div>
 
@@ -237,19 +247,36 @@ function handleStepEnter(response) {
     let stepPosterior = parseInt(response.index) + 1;
     if (response.direction == 'down') {
         if (response.index === 4) {
-            document.getElementById("masInfo").style.display = "block";
-            document.querySelector("canvas.particles-js-canvas-el").style.zIndex = -1;
-            
+            /* document.querySelector("canvas.particles-js-canvas-el").style.zIndex = -1; */
+            animateCSS('canvas.particles-js-canvas-el', 'bounceOutDown', function() {
+                document.querySelector("canvas.particles-js-canvas-el").style.zIndex = -1;
+                document.querySelector(".d3-tip").style.zIndex = 5;
+                document.getElementById("masInfo").style.display = "block";
+                document.getElementById("descargas").style.display = "block";
+                animateCSS('#masInfo', 'bounceIn')
+                animateCSS('#descargas', 'bounceIn')
+            })
         }
-        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75).attr('shape-rendering', 'geometricPrecision')
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
+        map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75).attr('shape-rendering', 'geometricPrecision')
+        /* animateCSS('#step-'+response.index, 'bounceIn'); */
     };
     if (response.direction == 'up') {
         if (response.index === 3) {
-            document.getElementById("masInfo").style.display = "none";
+            animateCSS('#masInfo', 'bounceOut', function() {
+                document.querySelector('#masInfo').style.display = "none";
+                document.querySelector('#masInfo').classList.remove('animated', 'bounceOut')
+            })
+            animateCSS('#descargas', 'bounceOut', function() {
+                document.querySelector('#descargas').style.display = "none";
+                document.querySelector('#descargas').classList.remove('animated', 'bounceOut')
+            })
         }
         if (response.index === 4) {
-            document.querySelector("canvas.particles-js-canvas-el").style.zIndex = 2;
+            /* document.querySelector("canvas.particles-js-canvas-el").style.zIndex = 2; */
+            animateCSS('canvas.particles-js-canvas-el', 'bounceOutDown');
+            document.querySelector(".d3-tip").style.zIndex = -1;
+
         }
         map.select('#step-'+stepPosterior).transition().duration(1500).attr('opacity', 0)
         map.select('#step-'+response.index).transition().duration(1500).attr('opacity', 0.75)
@@ -326,11 +353,7 @@ init();
 particlesJS("sticky", {
     "particles": {
         "number": {
-            "value": 70,
-            "density": {
-                "enable": true,
-                "value_area": 800
-            }
+            "value": 40,
         },
         "color": {
             "value": ["#34b3eb", "#ffe01b"]

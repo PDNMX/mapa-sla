@@ -1,0 +1,73 @@
+/* Extra small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+ }
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-color: white;
+    }
+    #outro {
+        height: 700px;
+    }
+    #scrolly {
+        padding: 10% 10% 0 10%;
+    }
+    #scroll {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .titulo {
+        letter-spacing: 0.05em;
+        font-size: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #masInfo {
+        position: absolute;
+        margin: 55% 0 0 2%;
+        font-size: 12px;
+    }
+    .scroll__text {
+        width: unset;
+    }
+    .modal .modal-dialog {
+        width: 90%;
+    }
+    .legend {
+        padding: 0 0 5px 10px !important;
+        margin: 0 0 5px 0px !important;
+        color: #fff;
+    }
+    #firstStep {
+        margin-top: -200px !important;
+    }
+    .svg-item {
+        width: 150px !important;
+    }
+    .iconos-sistemas {
+        max-width: 80px !important;
+    }
+    #intro {
+        margin-top: 0px !important;
+        padding-top: 0 !important;
+    }
+}
