@@ -3,33 +3,79 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
-
+    #outro {
+        height: 100px;
+    }
+    #intro {
+        margin-top: 0px !important;
+        padding-top: 0 !important;
+    }
+    .scroll__text {
+        width: 90%;
+    }
+    #scrolly {
+        padding: 10% 10% 0 10%;
+        background: #fff;
+    }
+    main#container {
+        background-color: #fff;
+    }
  }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-
+    #outro {
+        height: 1300px;
+    }
+    #intro {
+        margin-top: -100px !important;
+        padding-top: 0 !important;
+    }
+    .scroll__text {
+        width: 500px;
+    }
+    #scrolly {
+        padding: 10% 10% 0 10%;
+        background: #fff;
+        /* width: 700px !; */
+    }
+    main#container {
+        background-color: #fff;
+    }
  }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
-
- }
+    #outro {
+        height: 1500px;
+    }
+    #intro {
+        margin-top: -100px !important;
+        padding-top: 0 !important;
+    }
+    .scroll__text {
+        width: 700px;
+    }
+    #scrolly {
+        padding: 10% 10% 0 10%;
+        background: #fff;
+    }
+    main#container {
+        background-color: #fff;
+    }
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-
- }
-
-@media screen and (max-width: 1024px) {
     body {
         background-color: white;
     }
     #outro {
-        height: 700px;
+        height: 1800px;
     }
     #scrolly {
         padding: 10% 10% 0 10%;
+        background: #666;
     }
     #scroll {
         margin-left: 0px;
@@ -43,11 +89,13 @@ No media query for `xs` since this is the default in Bootstrap */
     }
     #masInfo {
         position: absolute;
-        margin: 55% 0 0 2%;
+        /* margin: 55% 0 0 2%; */
+        top: 10px;
+        right: 20px;
         font-size: 12px;
     }
     .scroll__text {
-        width: unset;
+        width: 700px;
     }
     .modal .modal-dialog {
         width: 90%;
@@ -67,7 +115,91 @@ No media query for `xs` since this is the default in Bootstrap */
         max-width: 80px !important;
     }
     #intro {
+        margin-top: -600px !important;
+        padding-top: 0 !important;
+    }
+    #footer1 {
+        padding-top: 94px;
+        padding-bottom: 64px;
+        margin-top: 0px;
+    }
+    main#container {
+        background-color: #666;
+    }
+ }
+
+
+@media (min-width: 1600px) { 
+    #outro {
+        height: 1800px;
+    }
+    #intro {
+        margin-top: -850px !important;
+        padding-top: 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        background-color: white;
+    }
+    #outro {
+        height: 500px;
+    }
+    #scrolly {
+        padding: 5% 10% 0 10%;
+    }
+    #scroll {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .titulo {
+        letter-spacing: 0.05em;
+        font-size: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #masInfo {
+        position: absolute;
+        margin: 55% 0 0 2%;
+        font-size: 12px;
+    }
+    #descargas {
+        position: absolute;
+        margin: 55% 0 0 0;
+        bottom: unset;
+        right: unset;
+        top: 10px;
+        left: 10px;
+        /* margin: 55% 0 0 2%;
+        font-size: 12px; */
+    }
+    
+    .scroll__text {
+        width: unset;
+    }
+    .modal .modal-dialog {
+        width: 95%;
+    }
+    .legend {
+        padding: 0 0 5px 10px !important;
+        margin: 0 0 5px 0px !important;
+        color: #fff;
+    }
+    #firstStep {
+        margin-top: -200px !important;
+    }
+    .svg-item {
+        width: 150px !important;
+    }
+    .iconos-sistemas {
+        max-width: 80px !important;
+    }
+    #intro {
         margin-top: 0px !important;
         padding-top: 0 !important;
+    }
+    #outro {
+        margin-bottom: 250px;
     }
 }
