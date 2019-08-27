@@ -255,6 +255,7 @@ function handleStepEnter(response) {
                 document.getElementById("descargas").style.display = "block";
                 animateCSS('#masInfo', 'bounceIn')
                 animateCSS('#descargas', 'bounceIn')
+                map.select('#step-4').transition().duration(1500).attr('opacity', 0.75).attr('shape-rendering', 'geometricPrecision')
             })
         }
         map.select('#step-'+stepAnterior).transition().duration(1500).attr('opacity', 0)
@@ -262,7 +263,7 @@ function handleStepEnter(response) {
         /* animateCSS('#step-'+response.index, 'bounceIn'); */
     };
     if (response.direction == 'up') {
-        if (response.index === 3) {
+        /* if (response.index === 3) {
             animateCSS('#masInfo', 'bounceOut', function() {
                 document.querySelector('#masInfo').style.display = "none";
                 document.querySelector('#masInfo').classList.remove('animated', 'bounceOut')
@@ -271,11 +272,21 @@ function handleStepEnter(response) {
                 document.querySelector('#descargas').style.display = "none";
                 document.querySelector('#descargas').classList.remove('animated', 'bounceOut')
             })
-        }
+        } */
         if (response.index === 4) {
             /* document.querySelector("canvas.particles-js-canvas-el").style.zIndex = 2; */
-            animateCSS('canvas.particles-js-canvas-el', 'bounceOutDown');
+            /* animateCSS('canvas.particles-js-canvas-el', 'bounceOutDown'); */
             document.querySelector(".d3-tip").style.zIndex = -1;
+            animateCSS('#masInfo', 'bounceOut', function() {
+                document.querySelector('#masInfo').style.display = "none";
+                document.querySelector('#masInfo').classList.remove('animated', 'bounceOut')
+            })
+            animateCSS('#descargas', 'bounceOut', function() {
+                document.querySelector('#descargas').style.display = "none";
+                document.querySelector('#descargas').classList.remove('animated', 'bounceOut')
+            })
+            document.querySelector("canvas.particles-js-canvas-el").style.zIndex = 2;
+            animateCSS('canvas.particles-js-canvas-el', 'bounceInDown')
 
         }
         map.select('#step-'+stepPosterior).transition().duration(1500).attr('opacity', 0)
