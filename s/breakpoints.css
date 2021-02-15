@@ -112,7 +112,7 @@ No media query for `xs` since this is the default in Bootstrap */
         width: 150px !important;
     }
     .iconos-sistemas {
-        max-width: 80px !important;
+        max-width: 100px !important;
     }
     #intro {
         margin-top: -600px !important;

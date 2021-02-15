@@ -51,8 +51,8 @@ d3.json("mexico.json")
                         element.properties.resumen=newElement.gsx$resumen.$t;
                         element.properties.s1=newElement.gsx$s1liga.$t;
                         element.properties.s2=newElement.gsx$s2liga.$t;
-                        element.properties.s3=newElement.gsx$s3liga.$t;
-                        element.properties.s3=newElement.gsx$s3liga.$t;
+                        element.properties.s3p=newElement.gsx$s3pliga.$t;
+                        element.properties.s3sp=newElement.gsx$s3spliga.$t;
                         element.properties.nombre=newElement.gsx$estado.$t;
                     }
                 });
@@ -151,7 +151,10 @@ d3.json("mexico.json")
                 
                 let s1 = d.properties.s1 !== "" ? "enabled" : "disabled";
                 let s2 = d.properties.s2 !== "" ? "enabled" : "disabled";
-                let s3 = d.properties.s3 !== "" ? "enabled" : "disabled";
+
+                let s3p = d.properties.s3p !== "" ? "enabled" : "disabled";
+                let s3sp = d.properties.s3sp !== "" ? "enabled" : "disabled";
+                
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
                     `<div class="modal-content">
@@ -172,7 +175,8 @@ d3.json("mexico.json")
                                 <br>
                                 <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="img/s1.svg"></img></a>
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
-                                <a id="s3" class="${s3}" target="_blank" href="${d.properties.s3}"><img class="iconos-sistemas" src="img/s3.svg"></img></a>
+                                <a id="s3" class="${s3p}" target="_blank" href="${d.properties.s3p}"><img class="iconos-sistemas" src="img/s3Particulares.svg"></img></a>
+                                <a id="s3" class="${s3sp}" target="_blank" href="${d.properties.s3sp}"><img class="iconos-sistemas" src="img/s3ServidoresPublicos.svg"></img></a>
                             </div>
                         </div>
 
