@@ -38,7 +38,8 @@ function animateCSS(element, animationName, callback) {
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
-        fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/o1a8gfg/public/values?alt=json')
+        //fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/o1a8gfg/public/values?alt=json')
+        fetch('https://raw.githubusercontent.com/ch3k0/temp-data/master/mapa-sla.json')
         .then(function(response) {
             return response.json();
         })
