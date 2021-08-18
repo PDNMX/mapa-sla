@@ -38,23 +38,24 @@ function animateCSS(element, animationName, callback) {
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
-        //fetch('https://spreadsheets.google.com/feeds/list/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/o1a8gfg/public/values?alt=json')
-        fetch('https://raw.githubusercontent.com/ch3k0/temp-data/master/mapa-sla.json')
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/values/Sheet3?key=AIzaSyDrvQehuVTPGJVCFVx3FUeAq2zqYbTCFDo')
         .then(function(response) {
             return response.json();
         })
         .then(function(jsonHugo) {
+            jsonHugo.values.shift();
+            //console.log(jsonHugo);
             mexico.objects.collection.geometries.forEach(function(element){
-                jsonHugo.feed.entry.forEach(function(newElement) {
-                    if(parseInt(element.properties.clave)===parseInt(newElement.gsx$claveagee.$t)){
-                        element.properties.puntaje=parseInt(newElement.gsx$puntaje.$t);
-                        element.properties.similitud=newElement.gsx$similitud.$t;
-                        element.properties.resumen=newElement.gsx$resumen.$t;
-                        element.properties.s1=newElement.gsx$s1liga.$t;
-                        element.properties.s2=newElement.gsx$s2liga.$t;
-                        element.properties.s3p=newElement.gsx$s3pliga.$t;
-                        element.properties.s3sp=newElement.gsx$s3spliga.$t;
-                        element.properties.nombre=newElement.gsx$estado.$t;
+                jsonHugo.values.forEach(function(newElement) {
+                    if(parseInt(element.properties.clave)===parseInt(newElement[1])){
+                        element.properties.puntaje=parseInt(newElement[28]);
+                        element.properties.similitud=newElement[29];
+                        element.properties.resumen=newElement[2];
+                        element.properties.s1=newElement[30];
+                        element.properties.s2=newElement[31];
+                        element.properties.s3p=newElement[32];
+                        element.properties.s3sp=newElement[33];
+                        element.properties.nombre=newElement[0];
                     }
                 });
             });
