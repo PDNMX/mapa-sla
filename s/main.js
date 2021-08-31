@@ -151,11 +151,11 @@ d3.json("mexico.json")
                             d.properties.puntaje >= 0  ? '#944b4f' :
                             '#FFF';
                 
-                let s1 = d.properties.s1 !== "" ? "enabled" : "disabled";
-                let s2 = d.properties.s2 !== "" ? "enabled" : "disabled";
+                let s1 = (d.properties.s1 !== undefined && d.properties.s1 !== "") ? "enabled" : "disabled";
+                let s2 = (d.properties.s2 !== undefined && d.properties.s2 !== "") ? "enabled" : "disabled";
 
-                let s3p = d.properties.s3p !== "" ? "enabled" : "disabled";
-                let s3sp = d.properties.s3sp !== "" ? "enabled" : "disabled";
+                let s3p = (d.properties.s3p !== undefined && d.properties.s3p !== "") ? "enabled" : "disabled";
+                let s3sp = (d.properties.s3sp !== undefined && d.properties.s3sp !== "") ? "enabled" : "disabled";
                 
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
