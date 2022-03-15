@@ -174,7 +174,7 @@ d3.json("mexico.json")
                             <br>
                             <div class="text-center">
                             <small>Sistemas:</small>
-                                <br>
+                                <br><br>
                                 <a id="s1" class="${s1}" target="_blank" href="${d.properties.s1}"><img class="iconos-sistemas" src="img/s1.svg"></img></a>
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
                                 <a id="s3" class="${s3p}" target="_blank" href="${d.properties.s3p}"><img class="iconos-sistemas" src="img/s3Particulares.svg"></img></a>

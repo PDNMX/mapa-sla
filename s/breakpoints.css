@@ -15,10 +15,10 @@ No media query for `xs` since this is the default in Bootstrap */
     }
     #scrolly {
         padding: 10% 10% 0 10%;
-        background: #fff;
+        background: #ced8db;
     }
     main#container {
-        background-color: #fff;
+        background-color: #ced8db;
     }
  }
 
@@ -36,11 +36,11 @@ No media query for `xs` since this is the default in Bootstrap */
     }
     #scrolly {
         padding: 10% 10% 0 10%;
-        background: #fff;
+        background: #ced8db;
         /* width: 700px !; */
     }
     main#container {
-        background-color: #fff;
+        background-color: #ced8db;
     }
  }
 
@@ -58,10 +58,10 @@ No media query for `xs` since this is the default in Bootstrap */
     }
     #scrolly {
         padding: 10% 10% 0 10%;
-        background: #fff;
+        background: #ced8db;
     }
     main#container {
-        background-color: #fff;
+        background-color: #ced8db;
     }
 }
 
@@ -103,7 +103,7 @@ No media query for `xs` since this is the default in Bootstrap */
     .legend {
         /* padding: 0 0 5px 15px !important;
         margin: 0 0 5px 0px !important; */
-        color: #fff;
+        color: #ced8db;
     }
     #firstStep {
         margin-top: -200px !important;
@@ -184,7 +184,7 @@ No media query for `xs` since this is the default in Bootstrap */
     .legend {
         /* padding: 0 0 5px 10px !important;
         margin: 0 0 5px 0px !important; */
-        color: #fff;
+        color: #ced8db;
     }
     #firstStep {
         margin-top: -200px !important;

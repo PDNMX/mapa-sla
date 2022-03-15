@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans SC", sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
   background-color: rgba(102, 102, 102, 1);
   font-weight: 300;
   color: #2a2a2a;
@@ -52,7 +53,7 @@ a {
 }
 
 .step {
-  background-color: rgba(102, 102, 102, 0.9);
+  background-color: rgba(13, 59, 73, 0.8);
   margin: 0 auto;
   padding: 20px;
   /* border: 1px solid; */
@@ -66,7 +67,7 @@ a {
 .txtStep {
   text-align: left;
   padding: 1rem;
-  color: #fff;
+  color: #ced8db;
 }
 
 main#container {
@@ -430,4 +431,115 @@ a.txtFooter:hover {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+
+.iconos-footer1 {
+  border: 0 none;
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  margin-left: 30px;
+}
+
+.column-sola {
+  background-color: #6b808a;
+  height: 250px;
+  margin-top: -50px;
+  max-width: 50px;
+}
+
+.row-solo {
+  background-color:#bae3f7;
+  /* padding-left: 0px;
+  padding-right: 0px; */
+  /* padding-left: -500px */
+}
+
+#row-background {
+/* height: 274px; */
+/* margin-top: -24px; */
+background-color: #124759;
+/* position:fixed; */
+/* top:0px;
+right:0px; */
+}
+
+.footer-row{
+  margin-top: 20px;
+}
+
+.footer-aling {
+justify-content: flex-end !important
+}
+
+#img-github {
+  width: 80px;
+}
+
+.article {
+color: #d0d7d9 !important;
+}
+
+@media (max-width: 576px) {
+  .site-footer {
+      text-align: center !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  .footer-row {
+      text-align: center !important;
+      align-items: center !important;
+  }
+  .site-footer .justify-content-start {
+      justify-content: center !important;
+  }
+  .iconos-footer {
+      height: 90px;
+      padding: 0;
+      margin-top: 20px
+  }
+  .footer-aling {
+      justify-content: center !important
+  }
+  #img-github {
+      width: 150px;
+  }
+  .iconos-menu {
+      height: 40px;
+      padding: 0px;
+  }
+  #text-sesion {
+      display: none;
+  }
+}
+
+.site-footer {
+  /* margin-top: 20px; */
+  padding-top: 50px;
+
+}
+
+.footer-link:hover {
+  color: #FFF !important;
+  border-bottom: 2px solid #3ab0e5;
+  text-decoration: none;
+}
+
+
+.site-footer a {
+  color: #ced8db;
+}
+
+#footer-about {
+  color: #666;
+}
+
+.iconos-footer {
+  height: 90px;
+  padding-top: 0px;
+  padding-left: 56px;
+  padding-right: 56px;
+  padding-bottom: 15px;
+  padding: 0px 56px 15px 0px;
 }
