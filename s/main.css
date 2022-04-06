@@ -324,6 +324,7 @@ main#container {
 .iconos-sistemas {
   max-width: 120px;
   width: 120px;
+  margin: 5px
 }
 
 .disabled {
