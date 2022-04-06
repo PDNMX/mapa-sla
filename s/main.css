@@ -537,9 +537,10 @@ color: #d0d7d9 !important;
 
 .iconos-footer {
   height: 90px;
-  padding-top: 0px;
+  /* padding-top: 0px;
   padding-left: 56px;
   padding-right: 56px;
   padding-bottom: 15px;
-  padding: 0px 56px 15px 0px;
+  padding: 0px 56px 15px 0px; */
+  margin:5px;
 }
