@@ -545,3 +545,23 @@ color: #d0d7d9 !important;
   padding: 0px 56px 15px 0px; */
   margin:5px;
 }
+
+.btn-label {
+	position: relative;
+	left: -12px;
+	display: inline-block;
+	padding: 6px 12px;
+	background: rgba(0, 0, 0, 0.15);
+	/* border-radius: 3px 0 0 3px; */
+}
+
+#basesLiga {
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	padding: .5em 1em;
+	font-weight: 500;
+	text-decoration: none;
+	color: #FFF;
+}

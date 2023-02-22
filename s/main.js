@@ -38,7 +38,7 @@ function animateCSS(element, animationName, callback) {
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/values/Sheet3?key=AIzaSyDrvQehuVTPGJVCFVx3FUeAq2zqYbTCFDo')
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/values/Febrero2023?key=AIzaSyDrvQehuVTPGJVCFVx3FUeAq2zqYbTCFDo')
         .then(function(response) {
             return response.json();
         })
@@ -56,6 +56,9 @@ d3.json("mexico.json")
                         element.properties.s3p=newElement[32];
                         element.properties.s3sp=newElement[33];
                         element.properties.nombre=newElement[0];
+                        // bases
+                        element.properties.baseLegend=newElement[34];
+                        element.properties.baseLink=newElement[35];
                     }
                 });
             });
@@ -156,6 +159,8 @@ d3.json("mexico.json")
 
                 let s3p = (d.properties.s3p !== undefined && d.properties.s3p !== "") ? "enabled" : "disabled";
                 let s3sp = (d.properties.s3sp !== undefined && d.properties.s3sp !== "") ? "enabled" : "disabled";
+
+                let bases = (d.properties.baseLegend !== undefined && d.properties.baseLegend !== "") ? "flex" : "none";
                 
                 let modal = new RModal(document.getElementById('modal'), {
                     content:
@@ -179,6 +184,13 @@ d3.json("mexico.json")
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
                                 <a id="s3" class="${s3p}" target="_blank" href="${d.properties.s3p}"><img class="iconos-sistemas" src="img/s3Particulares.svg"></img></a>
                                 <a id="s3" class="${s3sp}" target="_blank" href="${d.properties.s3sp}"><img class="iconos-sistemas" src="img/s3ServidoresPublicos.svg"></img></a>
+                            </div>
+                            <div style="display: ${bases}; justify-content: center; margin-top: 15px;">
+                                <br><br>
+                                <a id="basesLiga" style="background-color: ${color}; color: #fff" type="button" class="btn" target="_blank" href="${d.properties.baseLink}" role="button">
+                                <span style="padding: 6px 12px;"><img width="20px" alt="normatividad" src="img/icon-normatividad.svg"></span>
+                                ${d.properties.baseLegend}
+                                </a>
                             </div>
                         </div>
 
