@@ -322,8 +322,8 @@ main#container {
 }
 
 .iconos-sistemas {
-  max-width: 120px;
-  width: 120px;
+  max-width: 75px;
+  width: 750px;
   margin: 5px
 }
 
@@ -331,13 +331,22 @@ main#container {
   pointer-events: none;
   cursor: default;
   opacity: 0.3;
+  
 }
 
 .enabled {
   pointer-events: auto;
   cursor: pointer;
   opacity: 1;
+  text-decoration: underline;
 }
+
+/* .enabled > img {
+  box-shadow: 0 0 5px #d35400;
+  text-shadow: 0 0 5px #d35400;
+  border-radius: 50%;
+  margin: 10px;
+} */
 
 #progreso {
   margin: auto;

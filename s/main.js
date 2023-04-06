@@ -59,6 +59,8 @@ d3.json("mexico.json")
                         // bases
                         element.properties.baseLegend=newElement[34];
                         element.properties.baseLink=newElement[35];
+                        
+                        element.properties.s6=newElement[36];
                     }
                 });
             });
@@ -160,6 +162,8 @@ d3.json("mexico.json")
                 let s3p = (d.properties.s3p !== undefined && d.properties.s3p !== "") ? "enabled" : "disabled";
                 let s3sp = (d.properties.s3sp !== undefined && d.properties.s3sp !== "") ? "enabled" : "disabled";
 
+                let s6 = (d.properties.s6 !== undefined && d.properties.s6 !== "") ? "enabled" : "disabled";
+
                 let bases = (d.properties.baseLegend !== undefined && d.properties.baseLegend !== "") ? "flex" : "none";
                 
                 let modal = new RModal(document.getElementById('modal'), {
@@ -184,6 +188,7 @@ d3.json("mexico.json")
                                 <a id="s2" class="${s2}" target="_blank" href="${d.properties.s2}"><img class="iconos-sistemas" src="img/s2.svg"></img></a>
                                 <a id="s3" class="${s3p}" target="_blank" href="${d.properties.s3p}"><img class="iconos-sistemas" src="img/s3Particulares.svg"></img></a>
                                 <a id="s3" class="${s3sp}" target="_blank" href="${d.properties.s3sp}"><img class="iconos-sistemas" src="img/s3ServidoresPublicos.svg"></img></a>
+                                <a id="s6" class="${s6}" target="_blank" href="${d.properties.s6}"><img class="iconos-sistemas" src="img/s6.svg"></img></a>
                             </div>
                             <div style="display: ${bases}; justify-content: center; margin-top: 15px;">
                                 <br><br>
