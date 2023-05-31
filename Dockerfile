@@ -12,3 +12,5 @@ RUN yarn add global yarn \
 #EXPOSE 5000
 
 CMD ["serve"]
+
+#ALAN ESTUVO AQUI
