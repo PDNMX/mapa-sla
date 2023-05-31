@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-MAINTAINER Sergio Rodríguez <sergio.rdzsg@gmail.com>
+MAINTAINER Sergio Rodríguez. <sergio.rdzsg@gmail.com>
 
 ADD ./s /mapa-sla
 WORKDIR /mapa-sla
