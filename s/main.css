@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500 & display=swap');
+@import  url('https://fonts.googleapis.com/css2?family=Muli:wght@400;500;600;700;800&display=swap');
+
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Muli", sans-serif !important;
   background-color: rgba(102, 102, 102, 1);
   font-weight: 300;
   color: #2a2a2a;
@@ -21,6 +22,18 @@ a {
   font-weight: 300;
 }
 
+.letralesgislacion
+{
+  margin: 0;
+  padding: 0;
+  font-family: "Muli", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: justify;
+  color: whitesmoke;
+
+}
+
 .titulo {
   letter-spacing: 0.05em;
   padding-top: 10px;
@@ -31,6 +44,15 @@ a {
   color: #fff;
 }
 
+#divuno{
+  width: 10px;
+ background-color:#3ab0e5; 
+}
+
+.modal{
+  background-color: #3ab0e5;
+
+}
 #outro {
   height: 1800px;
 }
@@ -53,7 +75,7 @@ a {
 }
 
 .step {
-  background-color: rgba(13, 59, 73, 0.8);
+  background-color: rgba(28, 124, 191, 0.69);
   margin: 0 auto;
   padding: 20px;
   /* border: 1px solid; */
@@ -402,6 +424,11 @@ main#container {
   background-color: #fff;
 }
 
+.footer .acerca p a {
+  color: #e8e8e8;
+  text-decoration: none;
+}
+
 .txtFooter {
   margin-bottom: 16px;
 }
@@ -453,14 +480,14 @@ a.txtFooter:hover {
 }
 
 .column-sola {
-  background-color: #6b808a;
+  background-color: #713972;
   height: 250px;
   margin-top: -50px;
   max-width: 50px;
 }
 
 .row-solo {
-  background-color:#bae3f7;
+  background: transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box;
   /* padding-left: 0px;
   padding-right: 0px; */
   /* padding-left: -500px */
@@ -538,7 +565,7 @@ color: #d0d7d9 !important;
 
 
 .site-footer a {
-  color: #ced8db;
+  color: #57585A;
 }
 
 #footer-about {
