@@ -23,9 +23,94 @@ a {
 }
 
 
+
 #navbarHeadLegislacion{
   background:transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box !important; z-index: 2; position: relative;
   color: whitesmoke;
+}
+
+
+
+
+a {
+  background: transparent;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-family: "muli", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: justify;
+}
+
+/* aqui comenzamos a trabajar los nuevos estilos repetidos*/
+
+img {
+  border: 0;
+}
+img, svg {
+  vertical-align: middle;
+}
+
+before {
+  box-sizing: border-box;
+}
+
+.footer .redes, .footer .acerca, .footer .logos1 {
+  margin: 20px 0;
+}
+
+footer .acerca p {
+  text-align: right;
+  color: #e8e8e8;
+}
+
+footer .acerca {
+  background: transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box;
+}
+
+.footer .item2 {
+  padding: 0;
+  margin: 0;
+}
+
+.footer .rellenar-altura {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+div {
+  display: block;
+}
+
+element.style {
+  border-width: 0px;
+  width: 110px;
+  height: 39px;
+  margin-right: 40px;
+}
+
+.footer .item3 {
+  padding: 2rem 0rem 2rem 0;
+}
+
+.footer .item3 img {
+  height: 80px;
+  padding: 0px 15px 20px 0px;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+.footer .logos1, .footer .logos2 {
+  display: flex;
+  justify-content: center;
 }
 
 .letralesgislacion
@@ -400,9 +485,12 @@ main#container {
   width: 100%;
   /* height: 500px; */ /* Set the fixed height of the footer here */
   line-height: 1.46429em;
-  background-color: rgba(102, 102, 102, 1);
+  /*background-color: rgba(102, 102, 102, 1);
   color: #fff;
-  min-height: 150px;
+  min-height: 150px;*/
+  background: #fff;
+  border: none;
+  border-top: 1px solid #ccc;
 }
 
 .text-muted {
@@ -606,4 +694,123 @@ color: #d0d7d9 !important;
 	font-weight: 500;
 	text-decoration: none;
 	color: #FFF;
+}
+
+/********* SECCIÓN FOOTER **********/
+
+.footer .item1 img {
+  height: 27px;
+  padding: 3px 0px 0px 10px;
+}
+
+.footer .acerca {
+  background: transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box;
+}
+
+.footer .acerca p {
+
+  text-align: right;
+  color: #e8e8e8;
+}
+
+.footer .acerca p a {
+  color: #e8e8e8;
+  text-decoration: none;
+}
+
+.footer .acerca p a:hover {
+  text-decoration: underline;
+}
+
+
+.footer p {
+  padding: 5px 10px 5px 10px;
+}
+
+
+.footer a {
+  font-size: .8em;
+}
+
+.footer .redes, .footer .acerca, .footer .logos1 {
+  margin: 20px 0;
+}
+
+.footer .item1 {
+  padding: 2rem 7rem 2rem 0;
+}
+
+.footer .item3 {
+  padding: 2rem 0rem 2rem 0;
+}
+
+.footer .item3 img {
+  height: 80px;
+  padding: 0px 15px 20px 0px;
+}
+
+
+.footer .logos1, .footer .logos2 {
+  display: flex;
+  justify-content: center;
+}
+
+
+.footer .item2 {
+  padding: 0;
+  margin: 0;
+}
+
+.footer .item0 {
+  background: #7f5277;
+  color:#fff;
+}
+
+.footer li a {
+  padding: 0;
+  text-transform: none;
+}
+
+.footer li a:hover {
+  text-decoration: underline;
+}
+
+
+
+.footer .rellenar-altura {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .col2 {
+  background: #815474;
+  width: 100px;
+  height: 100%;
+}
+
+.footer ul {
+  padding: 10px;
+}
+
+.footer li a {
+  padding: 0;
+  text-transform: none;
+}
+
+/* Este es el media Query del footer*/
+@media screen and (min-width: 960px) {
+  .flex-container {
+    display: flex;
+  }
+}
+/*este es el media Query*/
+@media only screen and (max-width: 600px) {
+   
+  .footer {
+    background: gray;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
 }
