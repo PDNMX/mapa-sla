@@ -29,8 +29,6 @@ main,
 section {
   display: block;
 
-<<<<<<< HEAD
-=======
 }
 
 ul {
@@ -40,28 +38,20 @@ ul {
   /* list-style-type: none; */
   }
 
->>>>>>> 5e52451e9b3ec7c40a3ef22a8199a1e45ee2c9c1
 #navbarHeadLegislacion{
   background:transparent linear-gradient(230deg, #1C7CBF 0%, #1C7CBF 4%, #9F58E2 49%, #6D4061 100%) 0% 0% no-repeat padding-box !important; z-index: 2; position: relative;
   color: whitesmoke;
 }
 
-<<<<<<< HEAD
-=======
 #email {
   color: #000;
   font-size: 0.8em !important;
 }
->>>>>>> 5e52451e9b3ec7c40a3ef22a8199a1e45ee2c9c1
 
 a {
   background: transparent;
 }
 
-<<<<<<< HEAD
-/* aqui comenzamos a trabajar los nuevos estilos repetidos*/
-
-=======
 p {
   margin: 0;
   padding: 0;
@@ -92,7 +82,6 @@ li a {
 }
 
 
->>>>>>> 5e52451e9b3ec7c40a3ef22a8199a1e45ee2c9c1
 .footer .redes, .footer .acerca, .footer .logos1 {
   margin: 20px 0;
 }
@@ -818,40 +807,6 @@ color: #d0d7d9 !important;
   padding: 10px;
 }
 
-<<<<<<< HEAD
-.item {
-  flex: 1 1 300px;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 300px;
-}
-
-.footer li a:hover {
-  text-decoration: underline;
-}
-
-li a {
-  text-align: center;
-  text-decoration: none;
-  padding: 0em 0.5em;
-  color: #57585A;
-  text-transform: uppercase;
-  transition: all 250ms cubic-bezier(0.39, 0.575, 0.565, 1);
-}
-/*esto quita los puntos de la lista*/
-ul {
-list-style: none;
-margin: 0;
-padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: #55575a;
-}
-
-=======
->>>>>>> 5e52451e9b3ec7c40a3ef22a8199a1e45ee2c9c1
 /* Este es el media Query del footer*/
 @media screen and (min-width: 960px) {
   .flex-container {
