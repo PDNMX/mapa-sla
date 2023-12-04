@@ -44,7 +44,7 @@ ul {
 }
 
 #email {
-  color: #000;
+  color: #000 !important;
   font-size: 0.8em !important;
 }
 
@@ -154,9 +154,18 @@ img, svg {
  background-color:#3ab0e5; 
 }
 
-.modal{
-  background-color: #3ab0e5;
-
+.modal {
+  /* display: none; */
+  background: rgba(0, 0, 0, .30);
+  z-index: 999;
+  padding: 30px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* scrollama */
