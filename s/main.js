@@ -390,7 +390,7 @@ particlesJS("sticky", {
             "value": 40,
         },
         "color": {
-            "value": ["#34b3eb", "#ffe01b"]
+            "value": ["#f230b9", "#1c7cbf"]
         },
         "shape": {
             "type": "circle",
