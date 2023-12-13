@@ -38,7 +38,7 @@ function animateCSS(element, animationName, callback) {
 d3.json("mexico.json")
     .then(function(data) {
         mexico = data;
-        fetch('https://sheets.googleapis.com/v4/spreadsheets/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/values/Febrero2023?key=AIzaSyDrvQehuVTPGJVCFVx3FUeAq2zqYbTCFDo')
+        fetch('https://sheets.googleapis.com/v4/spreadsheets/1E4YkpVl4zhkqA5_Aipq1u1-pBvSc7OXnQ5hZZ2mu9mc/values/datos?key=AIzaSyDrvQehuVTPGJVCFVx3FUeAq2zqYbTCFDo')
         .then(function(response) {
             return response.json();
         })
